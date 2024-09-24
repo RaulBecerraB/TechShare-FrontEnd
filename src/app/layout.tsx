@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import "@/styles/globals.css";
-import SideBar from "@/components/SideBar";
-import ClientSideBar from "@/components/ClientSideBar";
+import SideBar from "@/components/SideNav";
+import ClientSideBar from "@/components/ClientSideNav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
