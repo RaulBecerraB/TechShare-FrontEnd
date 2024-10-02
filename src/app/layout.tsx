@@ -23,7 +23,7 @@ export default function RootLayout(
         <div className="side-bar">
           <SideNav />
         </div>
-        <div className="m-6" style={{ width: '100%' }}>
+        <div className="m-8" style={{ width: '100%' }}>
         {children}
         </div>
       </body>

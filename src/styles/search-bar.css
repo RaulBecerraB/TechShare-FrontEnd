@@ -1,0 +1,22 @@
+.search-input {
+    width: 100%; /* Ajusta según sea necesario */
+    border-radius: 14px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Efecto de sombra interna */
+    background-color: white; 
+
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 1.2em;
+  }
+  
+  .search-input::placeholder {
+    color: #A3A3A3; /* Color del texto del placeholder */
+  }
+  
+  .search-icon {
+     position: absolute;
+     right: 10px;
+     top: 50%;
+     transform: translateY(-50%);
+  }
