@@ -19,13 +19,11 @@ export default function RootLayout(
   return (
     <html>
       <body className="horizontal-flex">
-        <div>
+        <div className="side-bar">
           <SideNav />
         </div>
-        <div>
-            <div className="pt-5">
+        <div className="m-6" style={{ width: '100%' }}>
             {children}
-            </div>
         </div>
       </body>
     </html>

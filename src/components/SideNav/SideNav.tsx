@@ -7,7 +7,7 @@ import NavLinks from '@/components/SideNav/NavLinks';
 
 const SideBar = () => {
     return (
-        <div className="sidebar">
+        <div>
             <NavLinks />
         </div>
     );

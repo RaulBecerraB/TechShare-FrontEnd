@@ -18,9 +18,8 @@ body {
 
   .horizontal-flex
   {
-    flex-wrap: wrap;
+    flex-direction: row;
     display: flex;
-    gap: 30%;
-    justify-content: none;
+    justify-content: 0;
   }
 }
