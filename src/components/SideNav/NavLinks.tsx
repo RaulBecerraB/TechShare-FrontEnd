@@ -4,16 +4,16 @@ import Link from 'next/link';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Panel de control', 
-    href: '/dashboard', 
+    href: '/Admin/dashboard', 
     icon: null 
   },
   {
     name: 'Roles',
-    href: '/roles',
+    href: '/Admin/roles',
     icon: null,
   },
   { name: 'Usuarios', 
-    href: '/users', 
+    href: '/Admin/users', 
     icon: null 
   },
 ];
