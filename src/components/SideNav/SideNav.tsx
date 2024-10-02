@@ -2,22 +2,13 @@
 
 import React from 'react';
 import '@/styles/side-bar.css'; // Make sure to create and style this CSS file
+import NavLinks from '@/components/SideNav/NavLinks';
 
-interface SideBarProps {
-    items: string[];
-    onItemSelect: (item: string) => void;
-}
 
-const SideBar: React.FC<SideBarProps> = ({ items, onItemSelect }) => {
+const SideBar = () => {
     return (
-        <div>
-            <ul>
-                {items.map((item: string, index: number) => (
-                    <li key={index} onClick={() => onItemSelect(item)}>
-                        {item}
-                    </li>
-                ))}
-            </ul>
+        <div className="sidebar">
+            <NavLinks />
         </div>
     );
 };

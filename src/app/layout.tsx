@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "@/styles/globals.css";
 import SideBar from "@/components/SideNav/SideNav";
-import ClientSideNav from "@/components/SideNav/ClientSideNav";
+import SideNav from "@/components/SideNav/SideNav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +20,7 @@ export default function RootLayout(
     <html>
       <body className="horizontal-flex">
         <div>
-          <ClientSideNav />
+          <SideNav />
         </div>
         <div>
           <div>

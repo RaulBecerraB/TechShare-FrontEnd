@@ -3,14 +3,9 @@
 import React from 'react';
 import SideBar from '@/components/SideNav/SideNav';
 
-const items = ['Item 1', 'Item 2', 'Item 3'];
+const ClientSideBar = () => {
 
-const ClientSideBar: React.FC = () => {
-    const handleItemSelect = (item: string) => {
-        console.log('Selected item:', item);
-    };
-
-    return <SideBar items={items} onItemSelect={handleItemSelect} />;
+    return <SideBar />;
 };
 
 export default ClientSideBar;
