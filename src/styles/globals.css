@@ -20,7 +20,7 @@ body {
   {
     flex-wrap: wrap;
     display: flex;
-    gap: 100px;
+    gap: 30%;
     justify-content: none;
   }
 }

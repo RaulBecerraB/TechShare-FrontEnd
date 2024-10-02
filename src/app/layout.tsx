@@ -23,9 +23,9 @@ export default function RootLayout(
           <SideNav />
         </div>
         <div>
-          <div>
+            <div className="pt-5">
             {children}
-          </div>
+            </div>
         </div>
       </body>
     </html>
