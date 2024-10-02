@@ -3,7 +3,8 @@ import Link from 'next/link';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Panel de control', 
+  { 
+    name: 'Panel de control', 
     href: '/admin/dashboard', 
     icon: null 
   },
@@ -24,9 +25,8 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <div>
+          <div key={link.name}>
             <Link
-            key={link.name}
             href={link.href}
             className="flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
           >
