@@ -10,7 +10,7 @@ interface SideBarProps {
 
 const SideBar: React.FC<SideBarProps> = ({ items, onItemSelect }) => {
     return (
-        <div className='sidebar'>
+        <div>
             <ul>
                 {items.map((item: string, index: number) => (
                     <li key={index} onClick={() => onItemSelect(item)}>

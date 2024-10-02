@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import "@/styles/globals.css";
-import SideBar from "@/components/SideNav";
-import ClientNavBar from "@/components/ClientSideNav";
+import SideBar from "@/components/SideNav/SideNav";
+import ClientSideNav from "@/components/SideNav/ClientSideNav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,11 +18,11 @@ export default function RootLayout(
 {
   return (
     <html>
-      <body>
+      <body className="horizontal-flex">
         <div>
-          <div>
-            <ClientNavBar />
-          </div>
+          <ClientSideNav />
+        </div>
+        <div>
           <div>
             {children}
           </div>

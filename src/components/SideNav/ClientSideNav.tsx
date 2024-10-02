@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import SideBar from '@/components/SideNav';
+import SideBar from '@/components/SideNav/SideNav';
 
 const items = ['Item 1', 'Item 2', 'Item 3'];
 

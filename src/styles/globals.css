@@ -15,4 +15,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .horizontal-flex
+  {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 100px;
+    justify-content: none;
+  }
 }
