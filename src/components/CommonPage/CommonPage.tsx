@@ -3,6 +3,7 @@ import '@/styles/containers.css'
 import '@/styles/buttons.css'
 import {inter} from '@/services/fonts'
 import SearchBar from '@/components/SearchBar'
+import Dropdown from '../Dropdown'
 
 export default function CommonPage() {
   return (
@@ -16,6 +17,7 @@ export default function CommonPage() {
         </button>
         </div>
         <SearchBar/>
+        <Dropdown/>
         
     </div>
   )
