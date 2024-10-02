@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import SideBar from "@/components/SideNav/SideNav";
 import SideNav from "@/components/SideNav/SideNav";
+import {inter} from "@/services/fonts"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,12 +19,12 @@ export default function RootLayout(
 {
   return (
     <html>
-      <body className="horizontal-flex">
+      <body className={`horizontal-flex ${inter.className}`}>
         <div className="side-bar">
           <SideNav />
         </div>
         <div className="m-6" style={{ width: '100%' }}>
-            {children}
+        {children}
         </div>
       </body>
     </html>
