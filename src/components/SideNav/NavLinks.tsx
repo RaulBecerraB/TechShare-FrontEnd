@@ -4,16 +4,16 @@ import Link from 'next/link';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Panel de control', 
-    href: '/Admin/dashboard', 
+    href: '/admin/dashboard', 
     icon: null 
   },
   {
     name: 'Roles',
-    href: '/Admin/roles',
+    href: '/admin/roles',
     icon: null,
   },
   { name: 'Usuarios', 
-    href: '/Admin/users', 
+    href: '/admin/users', 
     icon: null 
   },
 ];
@@ -28,7 +28,7 @@ export default function NavLinks() {
             <Link
             key={link.name}
             href={link.href}
-            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
           >
             <p className="hidden md:block">{link.name}</p>
           </Link>
