@@ -1,9 +1,10 @@
 import React from 'react'
+import CommonPage from '@/components/AdminCrud/CrudHeader'
 
 export default function roles() {
   return (
     <div>
-      this is the users roles
+      <CommonPage/>
     </div>
   )
 }

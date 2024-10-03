@@ -1,8 +1,7 @@
-.sidebar
+.side-bar
 {
-    position: fixed;
-    width: 25%;
-    height: 100%;
+    width: 60vh;
+    height: 100vh;
     background: #ffffff;
     padding: 20px;
     transition: 0.5s;
