@@ -6,9 +6,6 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     appearance: none; /* Elimina el estilo predeterminado del navegador */
-    -webkit-appearance: none; /* Para navegadores WebKit */
-    -moz-appearance: none; /* Para navegadores Firefox */
-    position: relative;
   }
   
   .dropdown-icon {

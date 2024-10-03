@@ -16,9 +16,14 @@ export default function CommonPage() {
             Button
         </button>
         </div>
-        <SearchBar/>
-        <Dropdown/>
-        
+        <div style={{ display: 'flex', gap:'40px'}}>
+            <div style={{ width: '70%' }}>
+            <SearchBar/>
+            </div>
+            <div style={{ width: '30%' }}>
+            <Dropdown/>
+            </div>
+        </div>
     </div>
   )
 }
