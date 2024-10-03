@@ -1,5 +1,5 @@
 import React from 'react'
-import CommonPage from '@/components/CommonPage/CommonPage'
+import CommonPage from '@/components/AdminCrud/CrudHeader'
 
 export default function roles() {
   return (
