@@ -17,7 +17,7 @@ const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunct
   return (
     <div>
       <div className='white-container'>
-        <p className={` ${inter.className} antialiased font-semibold `} style={{ color: '#1E2A5E', fontSize: '1.5rem' }}>
+        <p className={`${inter.className} antialiased font-semibold`} style={{ color: '#1E2A5E', fontSize: '1.5rem' }}>
           {title}
         </p>
         <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} />
