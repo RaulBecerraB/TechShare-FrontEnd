@@ -4,6 +4,7 @@
     align-items: center;
     gap: 10px;
     margin-top: 20px;
+    font-size: small;
   }
   
   .pagination-button {
@@ -11,7 +12,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
 
-    padding: 1% 1.8%;
+    padding: 10px 14px;
 
     color: #1E2A5E;
     cursor: pointer;
@@ -19,9 +20,6 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s ease-in-out;
-
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
   
   .pagination-button.active {

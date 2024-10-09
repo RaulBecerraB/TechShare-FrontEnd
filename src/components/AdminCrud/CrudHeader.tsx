@@ -17,12 +17,12 @@ const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunct
   return (
     <div>
       <div className='white-container'>
-        <p className={`${inter.className} antialiased font-semibold text-lg text-[#1E2A5E]`} >
+        <p className={`${inter.className} antialiased font-semibold text-lg pl-1 text-[#1E2A5E]`} >
           {title}
         </p>
         <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} />
       </div>
-      <div className='flex gap-6 '>
+      <div className='flex gap-6'>
         <div className='w-3/4 '>
           <SearchBar />
         </div>

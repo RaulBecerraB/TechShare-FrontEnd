@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import SideBar from "@/components/SideNav/SideNav";
 import SideNav from "@/components/SideNav/SideNav";
-import {inter} from "@/services/fonts"
+import { inter } from "@/services/fonts"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,19 +12,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout(
   {
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>)
-{
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
   return (
     <html>
       <body className={`horizontal-flex ${inter.className}`}>
         <div className="side-bar">
           <SideNav />
         </div>
-        <div className="m-8" style={{ width: '100%' }}>
-        {children}
+        <div className="m-7" style={{ width: '100%' }}>
+          {children}
         </div>
       </body>
     </html>

@@ -10,7 +10,7 @@ interface CrudBodyProps {
 export default function CrudBody({ names }: CrudBodyProps) {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 5;
+    const recordsPerPage = 6;
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
