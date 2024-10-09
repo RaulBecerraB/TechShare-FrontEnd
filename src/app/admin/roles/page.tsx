@@ -1,10 +1,12 @@
+"use client"
 import React from 'react'
-import CommonPage from '@/components/AdminCrud/CrudHeader'
+import CrudHeader from '@/components/AdminCrud/CrudHeader'
 
 export default function roles() {
+
   return (
     <div>
-      <CommonPage/>
+      <CrudHeader title='Roles' buttonLabel='AÑADIR ROL' buttonFunction={() => console.log('hii')} />
     </div>
   )
 }
