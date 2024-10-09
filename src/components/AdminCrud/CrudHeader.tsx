@@ -5,7 +5,7 @@ import '@/styles/buttons.css'
 import { inter } from '@/services/fonts'
 import SearchBar from '@/components/SearchBar'
 import Dropdown from '../Dropdown'
-import Button from './Button'
+import Button from './PrimaryButton'
 
 interface CrudHeaderProps {
   title: string;
