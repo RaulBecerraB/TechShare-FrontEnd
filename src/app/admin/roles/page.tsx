@@ -1,10 +1,12 @@
+"use server"
 import React from 'react'
-import CommonPage from '@/components/AdminCrud/CrudHeader'
+import CrudHeader from '@/components/AdminCrud/CrudHeader'
 
-export default function roles() {
+export default async function roles() {
+
   return (
     <div>
-      <CommonPage/>
+      <CrudHeader title='Roles' buttonLabel='AÑADIR ROL'/>
     </div>
   )
 }
