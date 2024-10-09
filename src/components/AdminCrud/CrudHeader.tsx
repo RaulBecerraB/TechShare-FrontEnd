@@ -7,21 +7,20 @@ import SearchBar from '@/components/SearchBar'
 import Dropdown from '../Dropdown'
 import Button from './Button'
 
-const helloworld = () => console.log('Hello World')
-
 interface CrudHeaderProps {
   title: string;
   buttonLabel: string;
+  buttonFunction: any;
 }
 
-const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel }) => {
+const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunction }) => {
   return (
     <div>
       <div className='white-container'>
         <p className={` ${inter.className} antialiased font-semibold `} style={{ color: '#1E2A5E', fontSize: '1.5rem' }}>
           {title}
         </p>
-        <Button buttonLabel='hi' buttonFunction={helloworld} />
+        <Button buttonLabel='hi' buttonFunction={buttonFunction} />
       </div>
       <div style={{ display: 'flex', gap: '40px' }}>
         <div style={{ width: '70%' }}>
