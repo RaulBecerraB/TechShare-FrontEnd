@@ -20,7 +20,7 @@ const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunct
         <p className={` ${inter.className} antialiased font-semibold `} style={{ color: '#1E2A5E', fontSize: '1.5rem' }}>
           {title}
         </p>
-        <Button buttonLabel='hi' buttonFunction={buttonFunction} />
+        <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} />
       </div>
       <div style={{ display: 'flex', gap: '40px' }}>
         <div style={{ width: '70%' }}>
