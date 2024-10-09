@@ -1,0 +1,40 @@
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.crud-table th, .crud-table td {
+    text-align: left;
+    padding: 12px 8px;
+    border-bottom: 1px solid #ccc;
+    color: #1E2A5E;
+}
+
+.crud-table th {
+    font-weight: bold;
+    color: #1E2A5E;
+}
+
+.crud-table td:last-child {
+    text-align: right;
+}
+
+.crud-table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.crud-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #55679C;
+    margin-right: 8px;
+}
+
+.action-button:hover {
+    color: #63778c; /* Color al hacer hover */
+}

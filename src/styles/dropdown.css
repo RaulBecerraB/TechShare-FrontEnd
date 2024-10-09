@@ -1,17 +1,17 @@
 .dropdown {
     width: 100%;
-    padding: 1em;
-    border-radius: 14px;
+    border-radius: 10px;
+    padding: 3%;
     border: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
-    appearance: none; /* Elimina el estilo predeterminado del navegador */
+    appearance: none; 
   }
   
   .dropdown-icon {
     position: absolute;
     right: 10px;
+    pointer-events: none; /* Evita que el icono interfiera con el dropdown */
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Evita que el icono interfiera con el dropdown */
   }

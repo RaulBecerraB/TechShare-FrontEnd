@@ -17,16 +17,16 @@ const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunct
   return (
     <div>
       <div className='white-container'>
-        <p className={` ${inter.className} antialiased font-semibold `} style={{ color: '#1E2A5E', fontSize: '1.5rem' }}>
+        <p className={`${inter.className} antialiased font-semibold text-lg pl-1 text-[#1E2A5E]`} >
           {title}
         </p>
         <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} />
       </div>
-      <div style={{ display: 'flex', gap: '40px' }}>
-        <div style={{ width: '70%' }}>
+      <div className='flex gap-6'>
+        <div className='w-3/4 '>
           <SearchBar />
         </div>
-        <div style={{ width: '30%' }}>
+        <div className='w-1/4'>
           <Dropdown />
         </div>
       </div>

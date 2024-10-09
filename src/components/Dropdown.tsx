@@ -6,9 +6,9 @@ import filterIcon from '/src/assets/icons/filter.svg'
 
 export default function Dropdown() {
   return (
-    <div>
-      <div className='input-container'>
-        <select className='dropdown' defaultValue="">
+    <div className=''>
+      <div className='my-6 relative '>
+        <select className='dropdown text-sm' defaultValue="">
           <option value="" disabled>Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>

@@ -7,7 +7,6 @@
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin: 4px 2px;
     cursor: pointer;
-    border-radius: 14px;
+    border-radius: 10px;
 }
