@@ -1,7 +1,7 @@
 /* components/SearchBar.module.css */
 .search-bar {
-  width: 100%; 
-  padding: 1em;
+  width: 100%;
+  padding: 2%;
   border-radius: 14px; 
   border: none; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);

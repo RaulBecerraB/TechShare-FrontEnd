@@ -10,15 +10,18 @@
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+
+    padding: 1% 1.8%;
+
     color: #1E2A5E;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s ease-in-out;
+
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
   
   .pagination-button.active {

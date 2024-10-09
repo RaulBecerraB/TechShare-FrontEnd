@@ -10,7 +10,7 @@ interface CrudBodyProps {
 export default function CrudBody({ names }: CrudBodyProps) {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 6;
+    const recordsPerPage = 5;
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -25,7 +25,7 @@ export default function CrudBody({ names }: CrudBodyProps) {
             <div className='white-container'>
                 <table className='crud-table'>
                     <thead>
-                        <tr>
+                        <tr className='text-lg'>
                             <th>Nombre</th>
                             <th></th>
                             <th></th>
@@ -34,7 +34,7 @@ export default function CrudBody({ names }: CrudBodyProps) {
                     <tbody>
                         {currentRecords.map((name, index) => (
                             <tr key={index}>
-                                <td>{name}</td>
+                                <td className='text-sm'>{name}</td>
                                 <td></td>
                                 <td>
                                     <button className="action-button">

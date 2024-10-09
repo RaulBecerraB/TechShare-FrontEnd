@@ -7,14 +7,12 @@
     text-align: left;
     padding: 12px 8px;
     border-bottom: 1px solid #ccc;
-    font-size: 1.1rem;
     color: #1E2A5E;
 }
 
 .crud-table th {
     font-weight: bold;
     color: #1E2A5E;
-    font-size: 1.2rem;
 }
 
 .crud-table td:last-child {
@@ -34,7 +32,6 @@
     border: none;
     cursor: pointer;
     color: #55679C;
-    font-size: 1.2rem;
     margin-right: 8px;
 }
 
