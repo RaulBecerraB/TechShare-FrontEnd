@@ -16,7 +16,7 @@ export default function CrudBody({ data }: CrudBodyProps) {
     const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
 
     // Verificar que los datos no estén vacíos
-    const headers = data.length > 0 ? Object.keys(data[0]).filter(header => header !== 'id') : [];
+    const headers = data.length > 0 ? Object.keys(data[0]).filter(header => !header.endsWith('id')) : [];
     const totalPages = Math.ceil(data.length / recordsPerPage);
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
