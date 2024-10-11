@@ -2,30 +2,13 @@
 import React, {useEffect,useState} from 'react'
 import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
+import { useFetchData } from '@/services/useFetchData'
 
 export default function roles() {
 
-  const [data, setData] = useState<any>([]);
-
   const dataUrl = '/dummyUsers.json'
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(dataUrl);
-      if (!response.ok) {
-        throw new Error('Error fetching data');
-      }
-      const data = await response.json();
-      setData(data);
-    } catch (error) {
-      console.error('Failed to fetch data:', error);
-      return [];
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [dataUrl]);
+  const { data } = useFetchData<any>(dataUrl);  // Usar el hook para obtener los datos
 
   return (
     <div>
