@@ -13,5 +13,10 @@
       "name": "Usuarios", 
       "href": "/admin/users", 
       "icon": null 
+    },
+    {
+      "name": "Movimientos",
+      "href": "/admin/movements",
+      "icon": null
     }
 ]
