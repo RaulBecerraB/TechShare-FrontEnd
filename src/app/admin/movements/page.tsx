@@ -3,7 +3,7 @@ import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
 import { useFetchData } from '@/services/useFetchData'
 
-export default function roles() {
+export default function movements() {
 
   const dataUrl = '/dummy.json'
 
