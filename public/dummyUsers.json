@@ -1,0 +1,103 @@
+[
+    {
+      "user_id": 1,
+      "roles_id": 2,
+      "user_name": "user1",
+      "email": "user1@example.com",
+      "password": "passwordHash1",
+      "first_name": "John",
+      "last_name": "Doe",
+      "verified": true
+    },
+    {
+      "user_id": 2,
+      "roles_id": 3,
+      "user_name": "user2",
+      "email": "user2@example.com",
+      "password": "passwordHash2",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "verified": false
+    },
+    {
+      "user_id": 3,
+      "roles_id": 4,
+      "user_name": "user3",
+      "email": "user3@example.com",
+      "password": "passwordHash3",
+      "first_name": "Alice",
+      "last_name": "Brown",
+      "verified": true
+    },
+    {
+      "user_id": 4,
+      "roles_id": 1,
+      "user_name": "user4",
+      "email": "user4@example.com",
+      "password": "passwordHash4",
+      "first_name": "Bob",
+      "last_name": "Williams",
+      "verified": false
+    },
+    {
+      "user_id": 5,
+      "roles_id": 5,
+      "user_name": "user5",
+      "email": "user5@example.com",
+      "password": "passwordHash5",
+      "first_name": "Charlie",
+      "last_name": "Johnson",
+      "verified": true
+    },
+    {
+      "user_id": 6,
+      "roles_id": 2,
+      "user_name": "user6",
+      "email": "user6@example.com",
+      "password": "passwordHash6",
+      "first_name": "Emily",
+      "last_name": "Jones",
+      "verified": false
+    },
+    {
+      "user_id": 7,
+      "roles_id": 3,
+      "user_name": "user7",
+      "email": "user7@example.com",
+      "password": "passwordHash7",
+      "first_name": "David",
+      "last_name": "Garcia",
+      "verified": true
+    },
+    {
+      "user_id": 8,
+      "roles_id": 4,
+      "user_name": "user8",
+      "email": "user8@example.com",
+      "password": "passwordHash8",
+      "first_name": "Eve",
+      "last_name": "Martinez",
+      "verified": false
+    },
+    {
+      "user_id": 9,
+      "roles_id": 1,
+      "user_name": "user9",
+      "email": "user9@example.com",
+      "password": "passwordHash9",
+      "first_name": "Frank",
+      "last_name": "Lee",
+      "verified": true
+    },
+    {
+      "user_id": 10,
+      "roles_id": 5,
+      "user_name": "user10",
+      "email": "user10@example.com",
+      "password": "passwordHash10",
+      "first_name": "Grace",
+      "last_name": "Clark",
+      "verified": false
+    }
+  ]
+  

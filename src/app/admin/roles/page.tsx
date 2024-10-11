@@ -7,7 +7,7 @@ export default function roles() {
 
   const [data, setData] = useState<any>([]);
 
-  const dataUrl = '/dummy.json'
+  const dataUrl = '/dummyUsers.json'
 
   const fetchData = async () => {
     try {
