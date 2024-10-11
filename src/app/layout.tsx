@@ -18,7 +18,7 @@ export default function RootLayout(
   return (
     <html>
       <body className={`horizontal-flex ${inter.className}`}>
-        <div className="side-bar">
+        <div className="side-nav">
           <SideNav />
         </div>
         <div className="m-7" style={{ width: '100%' }}>
