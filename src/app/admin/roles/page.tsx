@@ -5,7 +5,7 @@ import { useFetchData } from '@/services/useFetchData'
 
 export default function roles() {
 
-  const dataUrl = '/dummy.json'
+  const dataUrl = '/dummyData/dummy.json'
 
   const { data } = useFetchData<any>(dataUrl);
 

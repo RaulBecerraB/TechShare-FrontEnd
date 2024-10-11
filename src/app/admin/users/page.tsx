@@ -5,7 +5,7 @@ import { useFetchData } from '@/services/useFetchData'
 
 export default function users() {
 
-  const dataUrl = '/dummyUsers.json'
+  const dataUrl = '/dummyData/dummyUsers.json'
   
   const { data } = useFetchData<any>(dataUrl);
 
