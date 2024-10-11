@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
@@ -30,17 +30,17 @@ export default function CrudBody({ data }: CrudBodyProps) {
                             {headers.map((header) => (
                                 <th key={header}>{header.toUpperCase()}</th>
                             ))}
-                            <th></th>
-                            <th></th>
+                            <th />
+                            <th />
                         </tr>
                     </thead>
                     <tbody>
                         {currentRecords.map((row: any) => (
                             <tr key={row.id}>
                                 {headers.map((header) => (
-                                    <td key={header}>{row[header]}</td>
+                                    <td key={header + row.id}>{row[header]}</td>
                                 ))}
-                                <td></td>
+                                <td />
                                 <td>
                                     <button className="action-button" onClick={() => console.log('Edit', row.id)}>
                                         <FaEdit />

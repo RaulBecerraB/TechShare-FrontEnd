@@ -3,8 +3,8 @@ import React from 'react'
 import '@/styles/containers.css'
 import '@/styles/buttons.css'
 import { inter } from '@/services/fonts'
-import SearchBar from '@/components/SearchBar'
-import Dropdown from '../Dropdown'
+import SearchBar from '@/components/AdminCrud/SearchBar'
+import Dropdown from './Dropdown'
 import Button from './PrimaryButton'
 
 interface CrudHeaderProps {

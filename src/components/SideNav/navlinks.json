@@ -1,0 +1,22 @@
+[
+    { 
+      "name": "Panel de control", 
+      "href": "/admin/dashboard", 
+      "icon": null 
+    },
+    {
+      "name": "Roles",
+      "href": "/admin/roles",
+      "icon": null
+    },
+    { 
+      "name": "Usuarios", 
+      "href": "/admin/users", 
+      "icon": null 
+    },
+    {
+      "name": "Movimientos",
+      "href": "/admin/movements",
+      "icon": null
+    }
+]

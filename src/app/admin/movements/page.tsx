@@ -3,10 +3,10 @@ import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
 import { useFetchData } from '@/services/useFetchData'
 
-export default function users() {
+export default function movements() {
 
-  const dataUrl = '/dummyData/dummyUsers.json'
-  
+  const dataUrl = '/dummy.json'
+
   const { data } = useFetchData<any>(dataUrl);
 
   return (

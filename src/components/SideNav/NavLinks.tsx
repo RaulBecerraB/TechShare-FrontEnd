@@ -1,23 +1,6 @@
 import Link from 'next/link';
+import links from './navlinks.json'
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
-const links = [
-  { 
-    name: 'Panel de control', 
-    href: '/admin/dashboard', 
-    icon: null 
-  },
-  {
-    name: 'Roles',
-    href: '/admin/roles',
-    icon: null,
-  },
-  { name: 'Usuarios', 
-    href: '/admin/users', 
-    icon: null 
-  },
-];
 
 export default function NavLinks() {
   return (
