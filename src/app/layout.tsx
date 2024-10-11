@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import "@/styles/globals.css";
-import SideBar from "@/components/SideNav/SideNav";
 import SideNav from "@/components/SideNav/SideNav";
 import { inter } from "@/services/fonts"
 

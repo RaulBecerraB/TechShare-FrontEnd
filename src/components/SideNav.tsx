@@ -8,7 +8,7 @@ interface SideBarProps {
     onItemSelect: (item: string) => void;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ items, onItemSelect }) => {
+const SideNav: React.FC<SideBarProps> = ({ items, onItemSelect }) => {
     return (
         <div>
             <ul>
@@ -22,4 +22,4 @@ const SideBar: React.FC<SideBarProps> = ({ items, onItemSelect }) => {
     );
 };
 
-export default SideBar;
+export default SideNav;
