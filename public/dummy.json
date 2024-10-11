@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "role": "Admin"
+    },
+    {
+        "id": 2,
+        "role": "Editor"
+    },
+    {
+        "id": 3,
+        "role": "Viewer"
+    },
+    {
+        "id": 4,
+        "role": "Contributor"
+    },
+    {
+        "id": 5,
+        "role": "Moderator"
+    },
+    {
+        "id": 6,
+        "role": "Admin"
+    },
+    {
+        "id": 7,
+        "role": "Editor"
+    },
+    {
+        "id": 8,
+        "role": "Viewer"
+    },
+    {
+        "id": 9,
+        "role": "Contributor"
+    },
+    {
+        "id": 10,
+        "role": "Moderator"
+    },
+    {
+        "id": 11,
+        "role": "Admin"
+    },
+    {
+        "id": 12,
+        "role": "Editor"
+    },
+    {
+        "id": 13,
+        "role": "Viewer"
+    },
+    {
+        "id": 14,
+        "role": "Contributor"
+    },
+    {
+        "id": 15,
+        "role": "Moderator"
+    },
+    {
+        "id": 16,
+        "role": "Admin"
+    },
+    {
+        "id": 17,
+        "role": "Editor"
+    },
+    {
+        "id": 18,
+        "role": "Viewer"
+    },
+    {
+        "id": 19,
+        "role": "Contributor"
+    },
+    {
+        "id": 20,
+        "role": "Moderator"
+    },
+    {
+        "id": 21,
+        "role": "Admin"
+    },
+    {
+        "id": 22,
+        "role": "Editor"
+    },
+    {
+        "id": 23,
+        "role": "Viewer"
+    },
+    {
+        "id": 24,
+        "role": "Contributor"
+    },
+    {
+        "id": 25,
+        "role": "Moderator"
+    },
+    {
+        "id": 26,
+        "role": "Admin"
+    },
+    {
+        "id": 27,
+        "role": "Editor"
+    },
+    {
+        "id": 28,
+        "role": "Viewer"
+    },
+    {
+        "id": 29,
+        "role": "Contributor"
+    },
+    {
+        "id": 30,
+        "role": "Moderator"
+    },
+    {
+        "id": 31,
+        "role": "Admin"
+    },
+    {
+        "id": 32,
+        "role": "Editor"
+    },
+    {
+        "id": 33,
+        "role": "Viewer"
+    },
+    {
+        "id": 34,
+        "role": "Contributor"
+    },
+    {
+        "id": 35,
+        "role": "Moderator"
+    },
+    {
+        "id": 36,
+        "role": "Admin"
+    },
+    {
+        "id": 37,
+        "role": "Editor"
+    },
+    {
+        "id": 38,
+        "role": "Viewer"
+    },
+    {
+        "id": 39,
+        "role": "Contributor"
+    },
+    {
+        "id": 40,
+        "role": "Moderator"
+    },
+    {
+        "id": 41,
+        "role": "Admin"
+    },
+    {
+        "id": 42,
+        "role": "Editor"
+    },
+    {
+        "id": 43,
+        "role": "Viewer"
+    },
+    {
+        "id": 44,
+        "role": "Contributor"
+    },
+    {
+        "id": 45,
+        "role": "Moderator"
+    },
+    {
+        "id": 46,
+        "role": "Admin"
+    },
+    {
+        "id": 47,
+        "role": "Editor"
+    },
+    {
+        "id": 48,
+        "role": "Viewer"
+    },
+    {
+        "id": 49,
+        "role": "Contributor"
+    },
+    {
+        "id": 50,
+        "role": "Moderator"
+    },
+    {
+        "id": 51,
+        "role": "Admin"
+    },
+    {
+        "id": 52,
+        "role": "Editor"
+    },
+    {
+        "id": 53,
+        "role": "Viewer"
+    },
+    {
+        "id": 54,
+        "role": "Contributor"
+    },
+    {
+        "id": 55,
+        "role": "Moderator"
+    }
+]

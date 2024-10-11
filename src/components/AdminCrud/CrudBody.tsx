@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
-import { FaEdit, FaTrash } from 'react-icons/fa'
-import '@/styles/crud-table.css'
-import '@/styles/pagination.css'
+import React, { useState,useEffect } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import '@/styles/crud-table.css';
+import '@/styles/pagination.css';
 
 interface CrudBodyProps {
-    names: string[];
+    data: any;
 }
 
-export default function CrudBody({ names }: CrudBodyProps) {
-
+export default function CrudBody({ data }: CrudBodyProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 6;
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const currentRecords = names.slice(indexOfFirstRecord, indexOfLastRecord);
+    const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    const totalPages = Math.ceil(names.length / recordsPerPage);
+    // Verificar que los datos no estén vacíos
+    const headers = data.length > 0 ? Object.keys(data[0]).filter(header => !header.endsWith('id')) : [];
+    const totalPages = Math.ceil(data.length / recordsPerPage);
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -26,21 +27,25 @@ export default function CrudBody({ names }: CrudBodyProps) {
                 <table className='crud-table'>
                     <thead>
                         <tr className='text-lg'>
-                            <th>Nombre</th>
+                            {headers.map((header) => (
+                                <th key={header}>{header.toUpperCase()}</th>
+                            ))}
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {currentRecords.map((name, index) => (
-                            <tr key={index}>
-                                <td className='text-sm'>{name}</td>
+                        {currentRecords.map((row: any) => (
+                            <tr key={row.id}>
+                                {headers.map((header) => (
+                                    <td key={header}>{row[header]}</td>
+                                ))}
                                 <td></td>
                                 <td>
-                                    <button className="action-button">
+                                    <button className="action-button" onClick={() => console.log('Edit', row.id)}>
                                         <FaEdit />
                                     </button>
-                                    <button className="action-button">
+                                    <button className="action-button" onClick={() => console.log('Delete', row.id)}>
                                         <FaTrash />
                                     </button>
                                 </td>

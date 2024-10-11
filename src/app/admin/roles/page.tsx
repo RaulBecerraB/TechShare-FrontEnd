@@ -1,18 +1,36 @@
 "use client"
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
 
 export default function roles() {
 
-  const names: string[] = ["Admin", "User", "Guest"];
-  const dummyData = Array.from({ length: 22 }, (_, i) => `Role ${i + 1}`);
-  names.push(...dummyData);
+  const [data, setData] = useState<any>([]);
+
+  const dataUrl = '/dummyUsers.json'
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(dataUrl);
+      if (!response.ok) {
+        throw new Error('Error fetching data');
+      }
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [dataUrl]);
 
   return (
     <div>
-      <CrudHeader title='Roles' buttonLabel='AÑADIR ROL' buttonFunction={() => console.log('hii')} />
-      <CrudBody names={names} />
+      <CrudHeader title='Roles' buttonLabel='AÑADIR ROL' buttonFunction={() => alert('Adding role')} />
+      <CrudBody data={data} />
     </div>
   )
 }
