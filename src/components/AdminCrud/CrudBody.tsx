@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
+import { Rowdies } from 'next/font/google';
 
 interface CrudBodyProps {
     data: any;
