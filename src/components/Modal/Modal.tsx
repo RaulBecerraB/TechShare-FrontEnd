@@ -1,6 +1,9 @@
+"use client"
+
 import React from 'react'
 import '@/styles/containers.css'
 import '@/styles/modal.css'
+import Button from '@/components/AdminCrud/PrimaryButton'
 
 export default function Modal() {
     return (
@@ -13,11 +16,22 @@ export default function Modal() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td className=''>
-                            <input type='text' />
+                        <td >
+                            <input className='mt-4 modal-input' type='text' />
                         </td>
                     </tr>
-
+                    <tr className='justify-end flex space-x-3 mt-4'>
+                        <Button
+                            buttonLabel='Cancelar'
+                            buttonFunction={() => console.log('Crear')}
+                            disabled={false}
+                        />
+                        <Button
+                            buttonLabel='Guardar'
+                            buttonFunction={() => console.log('Crear')}
+                            disabled={false}
+                        />
+                    </tr>
                 </tbody>
             </table>
         </div>
