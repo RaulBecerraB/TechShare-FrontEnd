@@ -42,18 +42,25 @@ export default function CrudBody({ data }: CrudBodyProps) {
         ));
     }
 
+    const renderTableHeaders = (headers: string[]) => {
+        return (
+            <tr className='text-lg'>
+                {headers.map((header: string) => (
+                    <th key={header}>{header.toUpperCase()}</th>
+                ))}
+                <th />
+                <th />
+            </tr>
+        )
+    }
+
+
     return (
         < div >
             <div className='white-container'>
                 <table className='crud-table'>
                     <thead>
-                        <tr className='text-lg'>
-                            {headers.map((header) => (
-                                <th key={header}>{header.toUpperCase()}</th>
-                            ))}
-                            <th />
-                            <th />
-                        </tr>
+                        {renderTableHeaders(headers)}
                     </thead>
                     <tbody>
                         {renderTableRows(headers, currentRecords)}
