@@ -3,7 +3,7 @@ import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
 import { Rowdies } from 'next/font/google';
 import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
-import { TableHeaders, TableRows } from '@/utils/TableRenderer';
+import { TableHeaders, TableRows } from '@/components/AdminCrud/TableRenderer';
 import Pagination from '@/components/AdminCrud/Pagination';
 
 export default function CrudBody({ data }: any) {
