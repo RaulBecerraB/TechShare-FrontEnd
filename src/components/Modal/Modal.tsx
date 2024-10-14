@@ -25,6 +25,7 @@ export default function Modal() {
                             buttonLabel='Cancelar'
                             buttonFunction={() => console.log('Crear')}
                             disabled={false}
+                            isSecondary={true}
                         />
                         <Button
                             buttonLabel='Guardar'
