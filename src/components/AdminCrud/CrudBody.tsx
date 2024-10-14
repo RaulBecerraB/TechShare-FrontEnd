@@ -26,7 +26,7 @@ export default function CrudBody({ data, searchTerm }: CrudBodyProps) {
 
     // Filtrar los datos cuando el término de búsqueda cambia
     useEffect(() => {
-        const lowercasedFilter = (searchTerm || '').toLowerCase();
+        const lowercasedFilter = (searchTerm).toLowerCase();
         const filtered = data.filter((item: any) =>
             Object.values(item).some((val: any) =>
                 String(val).toLowerCase().includes(lowercasedFilter)
