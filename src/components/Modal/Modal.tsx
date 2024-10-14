@@ -7,12 +7,11 @@ import Button from '@/components/AdminCrud/PrimaryButton'
 
 export default function Modal() {
     return (
-        <div className='white-container w-64'>
-            <div className='modal'>
+        <div className=''>
+            <div className='modal w-1/3'>
                 <div className='border-b-[1px]'>
                     <h2 className='text-lg'>Crear nuevo Rol</h2>
                 </div>
-
                 <div>
                     <input className='mt-4 modal-input' type='text' placeholder="Nombre del rol" />
                 </div>
