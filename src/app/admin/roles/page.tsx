@@ -3,30 +3,38 @@ import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
 import { useFetchData } from '@/services/useFetchData'
 import { useState } from 'react'
+import Modal from '@/components/Modal/Modal' // Importamos el Modal
 
 export default function roles() {
-
   const dataUrl = '/dummyData/dummy.json'
-  const { data } = useFetchData<any>(dataUrl);
+  const { data } = useFetchData<any>(dataUrl)
 
-  // Estado para el término de búsqueda
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('')
 
-  // Función que actualiza el término de búsqueda
-  const handleSearchChange = (value: string) => {
-    setSearchTerm(value);
-  };
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const handleSearchChange = (value: string) => setSearchTerm(value)
+
+  const showModal = () => setIsModalVisible(true)
+
+  const hideModal = () => setIsModalVisible(false)
 
   return (
     <div>
       <CrudHeader
         title='Roles'
         buttonLabel='AÑADIR ROL'
-        buttonDisabled={true}
-        buttonFunction={() => alert('Adding role')}
-        onSearchChange={handleSearchChange} // Asegúrate de pasar esta función
+        buttonDisabled={false}
+        buttonFunction={showModal}
+        onSearchChange={handleSearchChange}
       />
-      <CrudBody data={data} searchTerm={searchTerm} /> {/* Pasar el término de búsqueda */}
+      <CrudBody data={data} searchTerm={searchTerm} />
+
+      {isModalVisible && (
+        <div className="modal-overlay">
+          <Modal onClose={hideModal} />
+        </div>
+      )}
     </div>
   )
 }
