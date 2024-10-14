@@ -23,6 +23,25 @@ export default function CrudBody({ data }: CrudBodyProps) {
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
+    const renderTableRows = (headers: any, currentRecords: any) => {
+        return currentRecords.map((row: any) => (
+            <tr key={row.id}>
+                {headers.map((header: any) => (
+                    <td key={header + row.id}>{row[header]}</td>
+                ))}
+                <td />
+                <td>
+                    <button className="action-button" onClick={() => console.log('Edit', row.id)}>
+                        <FaEdit />
+                    </button>
+                    <button className="action-button" onClick={() => console.log('Delete', row.id)}>
+                        <FaTrash />
+                    </button>
+                </td>
+            </tr>
+        ));
+    }
+
     return (
         < div >
             <div className='white-container'>
@@ -37,22 +56,7 @@ export default function CrudBody({ data }: CrudBodyProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentRecords.map((row: any) => (
-                            <tr key={row.id}>
-                                {headers.map((header) => (
-                                    <td key={header + row.id}>{row[header]}</td>
-                                ))}
-                                <td />
-                                <td>
-                                    <button className="action-button" onClick={() => console.log('Edit', row.id)}>
-                                        <FaEdit />
-                                    </button>
-                                    <button className="action-button" onClick={() => console.log('Delete', row.id)}>
-                                        <FaTrash />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
+                        {renderTableRows(headers, currentRecords)}
                     </tbody>
                 </table>
             </div>
