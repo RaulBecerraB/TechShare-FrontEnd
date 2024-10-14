@@ -8,11 +8,11 @@ interface ButtonProps {
 
 export default function Button({ buttonLabel, buttonFunction, disabled = false }: ButtonProps) {
     return (
-        <button className={`primary-button ${disabled ? 'disabled-button' : ''}`}
+        <button className={`${disabled ? '' : 'primary-button'}`}
             onClick={buttonFunction}
             disabled={disabled}
         >
-            {buttonLabel}
+            {disabled ? '' : buttonLabel}
         </button>
     )
 }
