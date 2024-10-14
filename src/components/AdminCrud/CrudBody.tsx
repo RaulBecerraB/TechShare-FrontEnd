@@ -5,11 +5,7 @@ import { Rowdies } from 'next/font/google';
 import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
 import { renderTableHeaders, renderTableRows } from '@/utils/TableRenderer';
 
-interface CrudBodyProps {
-    data: any;
-}
-
-export default function CrudBody({ data }: CrudBodyProps) {
+export default function CrudBody({ data }: any) {
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 6;
     const totalPages = Math.ceil(data.length / recordsPerPage);

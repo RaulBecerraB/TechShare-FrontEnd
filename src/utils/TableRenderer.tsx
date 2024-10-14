@@ -1,6 +1,6 @@
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-export const renderTableRows = (headers: any, currentRecords: any) => {
+export const renderTableRows = (headers: string[], currentRecords: any) => {
     return currentRecords.map((row: any) => (
         <tr key={row.id}>
             {headers.map((header: any) => (
