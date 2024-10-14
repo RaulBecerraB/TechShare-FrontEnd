@@ -11,21 +11,22 @@ interface CrudHeaderProps {
   title: string;
   buttonLabel: string;
   buttonFunction: any;
-  onSearchChange: (value: string) => void; // Nueva prop para la búsqueda
+  onSearchChange: (value: string) => void;
+  buttonDisabled?: boolean; // Nueva prop opcional para deshabilitar el botón
 }
 
-const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunction, onSearchChange }) => {
+const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunction, onSearchChange, buttonDisabled }) => {
   return (
     <div>
       <div className='white-container'>
         <p className={`${inter.className} antialiased font-semibold text-lg pl-1 text-[#1E2A5E]`} >
           {title}
         </p>
-        <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} />
+        <Button buttonLabel={buttonLabel} buttonFunction={buttonFunction} disabled={buttonDisabled} /> {/* Pasamos el estado de disabled */}
       </div>
       <div className='flex gap-6'>
         <div className='w-3/4 '>
-          <SearchBar onSearchChange={onSearchChange} /> {/* Pasar la función de búsqueda */}
+          <SearchBar onSearchChange={onSearchChange} />
         </div>
         <div className='w-1/4'>
           <Dropdown />
