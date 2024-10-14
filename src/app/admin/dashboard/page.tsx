@@ -5,7 +5,7 @@ import Modal from '@/components/Modal/Modal'
 export default function dashboard() {
   return (
     <div>
-      <Modal />
+      <Modal onClose={() => 1 + 1} />
     </div>
   )
 }

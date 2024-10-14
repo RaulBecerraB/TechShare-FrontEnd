@@ -1,4 +1,17 @@
 /* Estilos generales para el modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Asegúrate de que el modal esté por encima de todo */
+}
+
 .modal {
     width: none;
     padding: 20px;
