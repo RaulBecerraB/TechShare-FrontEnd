@@ -11,21 +11,22 @@ interface CrudBodyProps {
 export default function CrudBody({ data }: CrudBodyProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 6;
+    const totalPages = Math.ceil(data.length / recordsPerPage);
 
     const isDataEmpty = () => data.length === 0 ? true : false
+    const filterHeadersWithId = () => Object.keys(data[0]).filter(header => !header.endsWith('id'));
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    // Verificar que los datos no estén vacíos
-    const headers = !isDataEmpty() ? Object.keys(data[0]).filter(header => !header.endsWith('id')) : [];
-    const totalPages = Math.ceil(data.length / recordsPerPage);
+    //we do not want to show the id in the table
+    const headers = !isDataEmpty() ? filterHeadersWithId() : [];
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div>
+        < div >
             <div className='white-container'>
                 <table className='crud-table'>
                     <thead>
@@ -82,6 +83,6 @@ export default function CrudBody({ data }: CrudBodyProps) {
                     {'>'}
                 </button>
             </div>
-        </div>
+        </div >
     );
 }
