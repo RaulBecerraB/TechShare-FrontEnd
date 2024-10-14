@@ -22,11 +22,11 @@ export default function roles() {
       <CrudHeader
         title='Roles'
         buttonLabel='AÑADIR ROL'
-        buttonDisabled={true}
+        buttonDisabled={false}
         buttonFunction={() => alert('Adding role')}
-        onSearchChange={handleSearchChange} // Asegúrate de pasar esta función
+        onSearchChange={handleSearchChange}
       />
-      <CrudBody data={data} searchTerm={searchTerm} /> {/* Pasar el término de búsqueda */}
+      <CrudBody data={data} searchTerm={searchTerm} />
     </div>
   )
 }
