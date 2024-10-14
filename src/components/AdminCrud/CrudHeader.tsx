@@ -11,9 +11,10 @@ interface CrudHeaderProps {
   title: string;
   buttonLabel: string;
   buttonFunction: any;
+  onSearchChange: (value: string) => void; // Nueva prop para la búsqueda
 }
 
-const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunction }) => {
+const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunction, onSearchChange }) => {
   return (
     <div>
       <div className='white-container'>
@@ -24,7 +25,7 @@ const CrudHeader: React.FC<CrudHeaderProps> = ({ title, buttonLabel, buttonFunct
       </div>
       <div className='flex gap-6'>
         <div className='w-3/4 '>
-          <SearchBar />
+          <SearchBar onSearchChange={onSearchChange} /> {/* Pasar la función de búsqueda */}
         </div>
         <div className='w-1/4'>
           <Dropdown />
