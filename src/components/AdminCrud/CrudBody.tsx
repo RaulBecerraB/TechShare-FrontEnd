@@ -4,6 +4,7 @@ import '@/styles/pagination.css';
 import { Rowdies } from 'next/font/google';
 import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
 import { renderTableHeaders, renderTableRows } from '@/utils/TableRenderer';
+import Pagination from '@/components/AdminCrud/Pagination';
 
 export default function CrudBody({ data }: any) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,31 +32,11 @@ export default function CrudBody({ data }: any) {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination">
-                <button
-                    className={`pagination-button ${currentPage === 1 ? 'disabled' : ''}`}
-                    onClick={() => handleClick(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    {'<'}
-                </button>
-                {[...Array(totalPages)].map((_, index) => (
-                    <button
-                        key={index + 1}
-                        className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}
-                        onClick={() => handleClick(index + 1)}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-                <button
-                    className={`pagination-button ${currentPage === totalPages ? 'disabled' : ''}`}
-                    onClick={() => handleClick(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                >
-                    {'>'}
-                </button>
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handleClick}
+            />
         </div >
     );
 }
