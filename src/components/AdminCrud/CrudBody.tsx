@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
 import { Rowdies } from 'next/font/google';
 import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
+import { renderTableHeaders, renderTableRows } from '@/utils/TableRenderer';
 
 interface CrudBodyProps {
     data: any;
@@ -22,38 +22,6 @@ export default function CrudBody({ data }: CrudBodyProps) {
     const headers = !isDataEmpty(data) ? filterHeadersWithId(data) : [];
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
-
-    const renderTableRows = (headers: any, currentRecords: any) => {
-        return currentRecords.map((row: any) => (
-            <tr key={row.id}>
-                {headers.map((header: any) => (
-                    <td key={header + row.id}>{row[header]}</td>
-                ))}
-                <td />
-                <td>
-                    <button className="action-button" onClick={() => console.log('Edit', row.id)}>
-                        <FaEdit />
-                    </button>
-                    <button className="action-button" onClick={() => console.log('Delete', row.id)}>
-                        <FaTrash />
-                    </button>
-                </td>
-            </tr>
-        ));
-    }
-
-    const renderTableHeaders = (headers: string[]) => {
-        return (
-            <tr className='text-lg'>
-                {headers.map((header: string) => (
-                    <th key={header}>{header.toUpperCase()}</th>
-                ))}
-                <th />
-                <th />
-            </tr>
-        )
-    }
-
 
     return (
         < div >
