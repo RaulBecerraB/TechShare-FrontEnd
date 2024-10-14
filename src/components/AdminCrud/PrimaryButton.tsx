@@ -3,11 +3,15 @@ import React from 'react'
 interface ButtonProps {
     buttonLabel: string;
     buttonFunction: any;
+    disabled?: boolean;
 }
 
-export default function Button({ buttonLabel, buttonFunction }: ButtonProps) {
+export default function Button({ buttonLabel, buttonFunction, disabled = false }: ButtonProps) {
     return (
-        <button className='primary-button' onClick={buttonFunction}>
+        <button className={`primary-button ${disabled ? 'disabled-button' : ''}`}
+            onClick={buttonFunction}
+            disabled={disabled}
+        >
             {buttonLabel}
         </button>
     )
