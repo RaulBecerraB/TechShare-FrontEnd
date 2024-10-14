@@ -3,7 +3,7 @@ import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
 import { Rowdies } from 'next/font/google';
 import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
-import { renderTableHeaders, renderTableRows } from '@/utils/TableRenderer';
+import { TableHeaders, TableRows } from '@/utils/TableRenderer';
 import Pagination from '@/components/AdminCrud/Pagination';
 
 export default function CrudBody({ data }: any) {
@@ -25,10 +25,11 @@ export default function CrudBody({ data }: any) {
             <div className='white-container'>
                 <table className='crud-table'>
                     <thead>
-                        {renderTableHeaders(headers)}
+                        <TableHeaders headers={headers} />
                     </thead>
                     <tbody>
-                        {renderTableRows(headers, currentRecords)}
+                        <TableRows headers={headers}
+                            currentRecords={currentRecords} />
                     </tbody>
                 </table>
             </div>
