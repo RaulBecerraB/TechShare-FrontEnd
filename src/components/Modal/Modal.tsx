@@ -11,7 +11,7 @@ interface ModalProps {
 
 export default function Modal({ onClose }: ModalProps) {
     return (
-        <div className=''>
+        <div>
             <div className='modal'>
                 <div className='border-b-[1px]'>
                     <h2 className='text-lg'>Crear nuevo Rol</h2>
