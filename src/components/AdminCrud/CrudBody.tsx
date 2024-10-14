@@ -3,6 +3,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
 import { Rowdies } from 'next/font/google';
+import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
 
 interface CrudBodyProps {
     data: any;
@@ -13,15 +14,12 @@ export default function CrudBody({ data }: CrudBodyProps) {
     const recordsPerPage = 6;
     const totalPages = Math.ceil(data.length / recordsPerPage);
 
-    const isDataEmpty = () => data.length === 0 ? true : false
-    const filterHeadersWithId = () => Object.keys(data[0]).filter(header => !header.endsWith('id'));
-
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
 
     //we do not want to show the id in the table
-    const headers = !isDataEmpty() ? filterHeadersWithId() : [];
+    const headers = !isDataEmpty(data) ? filterHeadersWithId(data) : [];
 
     const handleClick = (pageNumber: number) => setCurrentPage(pageNumber);
 
