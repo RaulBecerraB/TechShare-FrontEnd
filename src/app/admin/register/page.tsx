@@ -42,19 +42,15 @@ export default function register() {
                 CREATE AN ACCOUNT
             </h1>
             <form>
-                <label htmlFor="first_name">Nombre</label>
-                <input type="text" id="first_name" name="first_name" required />
+                <input placeholder="Nombre" type="text" id="first_name" name="first_name" required />
 
-                <label htmlFor="last_name">Apellido</label>
-                <input type="text" id="last_name" name="last_name" required />
+                <input placeholder="Apellido" type="text" id="last_name" name="last_name" required />
 
-                <label htmlFor="email">Correo</label>
-                <input type="text" id="email" name="email" required />
-
-                <label htmlFor="password">Contraseña</label>
+                <input placeholder="Correo electrónico" type="text" id="email" name="email" required />
 
                 <div className="relative">
                     <input
+                        placeholder="Contraseña"
                         className="w-full"
                         type={passwordVisible ? "text" : "password"}
                         id="password"
@@ -68,10 +64,9 @@ export default function register() {
                         <FaEye />
                     </span>
                 </div>
-
-                <label htmlFor="confirmPassword">Confirmar contraseña</label>
                 <div className='relative'>
                     <input
+                        placeholder="Confirmar contraseña"
                         className="w-full"
                         type={confirmPasswordVisible ? "text" : "password"}
                         id="confirmPassword"
