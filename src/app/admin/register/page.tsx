@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Button from "@/components/AdminCrud/PrimaryButton";
 import '@/styles/containers.css'
@@ -39,41 +40,47 @@ export default function register() {
         <div className="form-container">
             <h1>CREATE AN ACCOUNT</h1>
             <form>
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required />
+                <label htmlFor="first_name">Nombre</label>
+                <input type="text" id="first_name" name="first_name" required />
 
-                <label htmlFor="surname">Surname</label>
-                <input type="text" id="surname" name="surname" required />
+                <label htmlFor="last_name">Apellido</label>
+                <input type="text" id="last_name" name="last_name" required />
 
-                <label htmlFor="password">Password</label>
-                <div className="password-container">
+                <label htmlFor="email">Correo</label>
+                <input type="text" id="email" name="email" required />
+
+                <label htmlFor="password">Contraseña</label>
+
+                <div className="relative">
                     <input
+                        className="w-full"
                         type={passwordVisible ? "text" : "password"}
                         id="password"
                         name="password"
                         required
                     />
                     <span
-                        className="toggle-password"
+                        className="icon"
                         onClick={() => togglePasswordVisibility('password')}
                     >
-                        👁️
+                        <FaEye />
                     </span>
                 </div>
 
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <div className="password-container">
+                <label htmlFor="confirmPassword">Confirmar contraseña</label>
+                <div className='relative'>
                     <input
+                        className="w-full"
                         type={confirmPasswordVisible ? "text" : "password"}
                         id="confirmPassword"
                         name="confirmPassword"
                         required
                     />
                     <span
-                        className="toggle-password"
+                        className="icon"
                         onClick={() => togglePasswordVisibility('confirmPassword')}
                     >
-                        👁️
+                        <FaEye />
                     </span>
                 </div>
 
