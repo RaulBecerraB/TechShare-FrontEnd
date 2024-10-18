@@ -39,7 +39,7 @@ export default function register() {
     return (
         <div className="form-container">
             <h1 className="text-primary font-bold">
-                CREATE AN ACCOUNT
+                CREA UNA CUENTA
             </h1>
             <form>
                 <input placeholder="Nombre" type="text" id="first_name" name="first_name" required />
@@ -81,7 +81,7 @@ export default function register() {
                     </span>
                 </div>
 
-                <button type="submit">REGISTER</button>
+                <button className="bg-primary" type="submit">REGISTRAR</button>
             </form>
             <p>Already have an account? <a href="#">Log in</a></p>
         </div>
