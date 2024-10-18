@@ -38,7 +38,9 @@ export default function register() {
     };
     return (
         <div className="form-container">
-            <h1>CREATE AN ACCOUNT</h1>
+            <h1 className="text-primary font-bold">
+                CREATE AN ACCOUNT
+            </h1>
             <form>
                 <label htmlFor="first_name">Nombre</label>
                 <input type="text" id="first_name" name="first_name" required />
