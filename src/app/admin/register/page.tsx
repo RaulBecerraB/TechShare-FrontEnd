@@ -6,14 +6,12 @@ import '@/styles/containers.css'
 
 export default function register() {
 
-    const [registerData, setRegisterData] = useState([]);
-
     const handleRegister = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                tuser_name: 'John Doe',
+                user_name: 'JohnDoe',
                 first_name: 'John',
                 last_name: 'Doe',
                 email: 'JohnDoe@example.com',
@@ -22,14 +20,14 @@ export default function register() {
             })
         };
         fetch('http://localhost:8080/register', requestOptions)
-            .then(response => response.json())
-            .then(data => setRegisterData(data.id));
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
     };
-
     return (
         <div className="white-container">
             <h1>register</h1>
-            <Button buttonFunction={handleRegister} buttonLabel="CREAR REGISTRO"></Button>
+            <Button buttonFunction={handleRegister} buttonLabel="REGISTRAR"></Button>
         </div>
     );
 }
