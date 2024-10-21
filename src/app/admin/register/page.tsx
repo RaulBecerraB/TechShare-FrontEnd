@@ -6,6 +6,7 @@ import TextField from "@/components/Inputs/TextField";
 import PasswordField from "@/components/Inputs/PasswordField";
 import '@/styles/containers.css'
 import '@/styles/form.css'
+import '@/styles/buttons.css'
 
 export default function Register() {
     // Estados para capturar los valores de los inputs
@@ -92,7 +93,7 @@ export default function Register() {
                 <button
                     className="primary-button font-bold"
                     type="submit">
-                    REGISTER
+                    REGÍSTRATE
                 </button>
             </form>
             <p>¿Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
