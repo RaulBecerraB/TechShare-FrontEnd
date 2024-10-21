@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import Button from "@/components/AdminCrud/PrimaryButton";
-import FormInput from "@/components/Inputs/FormInput";
+import TextField from "@/components/Inputs/TextField";
 import '@/styles/containers.css'
 import '@/styles/form.css'
 
@@ -71,19 +71,19 @@ export default function Register() {
                 CREA UNA CUENTA
             </h1>
             <form onSubmit={handleRegister}>
-                <FormInput
+                <TextField
                     placeholder="Nombre"
                     name="first_name"
                     value={formData.first_name}
                     onChange={handleChange}
                 />
-                <FormInput
+                <TextField
                     placeholder="Apellido"
                     name="last_name"
                     value={formData.last_name}
                     onChange={handleChange}
                 />
-                <FormInput
+                <TextField
                     placeholder="Correo electrónico"
                     name="email"
                     value={formData.email}
