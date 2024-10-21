@@ -90,42 +90,18 @@ export default function Register() {
                     value={formData.email}
                     onChange={handleChange}
                 />
-                <div className="relative">
-                    <input
-                        placeholder="Contraseña"
-                        className="w-full"
-                        type={passwordVisible ? "text" : "password"}
-                        id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                    <span
-                        className="icon"
-                        onClick={() => togglePasswordVisibility('password')}
-                    >
-                        <FaEye />
-                    </span>
-                </div>
-                <div className='relative'>
-                    <input
-                        placeholder="Confirmar contraseña"
-                        className="w-full"
-                        type={confirmPasswordVisible ? "text" : "password"}
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                    />
-                    <span
-                        className="icon"
-                        onClick={() => togglePasswordVisibility('confirmPassword')}
-                    >
-                        <FaEye />
-                    </span>
-                </div>
+                <PasswordField
+                    placeholder="Contraseña"
+                    name="password"
+                    value={formData.password}
+                    handleChange={handleChange}
+                />
+                <PasswordField
+                    placeholder="Confirmar contraseña"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    handleChange={handleChange}
+                />
                 <button className="bg-primary" type="submit">REGISTRAR</button>
             </form>
             <p>¿Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
