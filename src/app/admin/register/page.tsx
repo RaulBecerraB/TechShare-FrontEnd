@@ -77,25 +77,18 @@ export default function Register() {
                     value={formData.first_name}
                     onChange={handleChange}
                 />
-                <input
+                <FormInput
                     placeholder="Apellido"
-                    type="text"
-                    id="last_name"
                     name="last_name"
                     value={formData.last_name}
                     onChange={handleChange}
-                    required
                 />
-                <input
+                <FormInput
                     placeholder="Correo electrónico"
-                    type="text"
-                    id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                 />
-
                 <div className="relative">
                     <input
                         placeholder="Contraseña"
