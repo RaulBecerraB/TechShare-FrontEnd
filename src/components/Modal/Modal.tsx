@@ -3,7 +3,7 @@
 import React from 'react'
 import '@/styles/containers.css'
 import '@/styles/modal.css'
-import Button from '@/components/AdminCrud/PrimaryButton'
+import Button from '@/components/Buttons/PrimaryButton'
 
 interface ModalProps {
     onClose: () => void; // Función para cerrar el modal

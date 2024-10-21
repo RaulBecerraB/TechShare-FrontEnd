@@ -2,16 +2,13 @@
 import Image from "next/image";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
-import Button from "@/components/AdminCrud/PrimaryButton";
+import Button from "@/components/Buttons/PrimaryButton";
 import TextField from "@/components/Inputs/TextField";
 import PasswordField from "@/components/Inputs/PasswordField";
 import '@/styles/containers.css'
 import '@/styles/form.css'
 
 export default function Register() {
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
     // Estados para capturar los valores de los inputs
     const [formData, setFormData] = useState({
         first_name: '',
@@ -28,15 +25,6 @@ export default function Register() {
             ...prevState,
             [name]: value
         }));
-    };
-
-    // Alternar visibilidad de las contraseñas
-    const togglePasswordVisibility = (type: any) => {
-        if (type === 'password') {
-            setPasswordVisible(!passwordVisible);
-        } else {
-            setConfirmPasswordVisible(!confirmPasswordVisible);
-        }
     };
 
     // Manejo del registro
