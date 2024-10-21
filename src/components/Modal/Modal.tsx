@@ -3,7 +3,8 @@
 import React from 'react'
 import '@/styles/containers.css'
 import '@/styles/modal.css'
-import Button from '@/components/Buttons/PrimaryButton'
+import PrimaryButton from '@/components/Buttons/PrimaryButton'
+import SecondaryButton from '@/components/Buttons/SecondaryButton'
 
 interface ModalProps {
     onClose: () => void; // Función para cerrar el modal
@@ -20,16 +21,13 @@ export default function Modal({ onClose }: ModalProps) {
                     <input className='mt-4 modal-input' type='text' placeholder="Nombre del rol" />
                 </div>
                 <div className='justify-end flex space-x-3 mt-2'>
-                    <Button
+                    <SecondaryButton
                         buttonLabel='Cancelar'
                         buttonFunction={onClose}
-                        disabled={false}
-                        isSecondary={true}
                     />
-                    <Button
+                    <PrimaryButton
                         buttonLabel='Guardar'
                         buttonFunction={() => console.log('Guardar')}
-                        disabled={false}
                     />
                 </div>
             </div>

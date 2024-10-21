@@ -9,7 +9,7 @@ interface ButtonProps {
 
 export default function Button({ buttonLabel, buttonFunction, isDisabled = false }: ButtonProps) {
     return (
-        <button className='primary-button'
+        <button className='secondary-button'
             onClick={buttonFunction}
             disabled={isDisabled}
         >
