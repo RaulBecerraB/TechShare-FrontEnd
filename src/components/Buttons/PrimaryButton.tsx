@@ -12,6 +12,7 @@ export default function Button({ buttonLabel, buttonFunction, isDisabled = false
         <button className='primary-button'
             onClick={buttonFunction}
             disabled={isDisabled}
+            type='submit'
         >
             {isDisabled ? '' : buttonLabel}
         </button>

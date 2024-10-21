@@ -20,10 +20,10 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ placeholder, name, value,
 
     return (
         <>
-            <div className="relative">
+            <div className="relative text-sm">
                 <input
                     placeholder={placeholder}
-                    className="w-full"
+                    className="w-full p-[10px] mb-[15px] border-b-[1px] border-primary rounded-none"
                     type={passwordVisible ? "text" : "password"}
                     id={name}
                     name={name}
@@ -35,7 +35,9 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ placeholder, name, value,
                     className="icon"
                     onClick={() => togglePasswordVisibility('password')}
                 >
-                    <FaEye />
+                    <div className='text-primary hover:text-gray-700 cursor-pointer'>
+                        <FaEye />
+                    </div>
                 </span>
             </div>
         </>

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
-import Button from "@/components/Buttons/PrimaryButton";
 import TextField from "@/components/Inputs/TextField";
 import PasswordField from "@/components/Inputs/PasswordField";
 import '@/styles/containers.css'
@@ -90,7 +89,11 @@ export default function Register() {
                     value={formData.confirmPassword}
                     handleChange={handleChange}
                 />
-                <button className="bg-primary" type="submit">REGISTRAR</button>
+                <button
+                    className="primary-button font-bold"
+                    type="submit">
+                    REGISTER
+                </button>
             </form>
             <p>¿Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
         </div>
