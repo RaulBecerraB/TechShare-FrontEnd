@@ -1,9 +1,9 @@
 .form-container {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 70vh;
+    padding: 6%;
+    border-radius: 20px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    width: 80vh;
     text-align: center;
     margin: auto;
     margin-top: 50px;
@@ -23,12 +23,6 @@ label {
     margin-bottom: 5px;
     text-align: left;
 }
-
-input[type="text"],
-input[type="password"] {
-    @apply p-[10px] mb-[15px] border-b-[1px] border-primary rounded-none;
-}
-
 .password-container {
     display: flex;
     align-items: center;
