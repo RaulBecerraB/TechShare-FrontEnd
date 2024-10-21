@@ -4,6 +4,7 @@ import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import Button from "@/components/AdminCrud/PrimaryButton";
 import TextField from "@/components/Inputs/TextField";
+import PasswordField from "@/components/Inputs/PasswordField";
 import '@/styles/containers.css'
 import '@/styles/form.css'
 
@@ -125,7 +126,6 @@ export default function Register() {
                         <FaEye />
                     </span>
                 </div>
-
                 <button className="bg-primary" type="submit">REGISTRAR</button>
             </form>
             <p>¿Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
