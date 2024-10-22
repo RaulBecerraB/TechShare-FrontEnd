@@ -22,21 +22,35 @@ const Page = () => {
 
     const handleLogin = (e: any) => {
         e.preventDefault(); // Evitar que el formulario se envíe por defecto
-    }
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email: formData.email,
-            first_name: formData.password,
-        })
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: formData.email,
+                password: formData.password,
+            }),
+        };
+
+        fetch('http://localhost:8080/login', requestOptions)
+            .then(response => {
+                // Usar .forEach para recorrer los headers
+                response.headers.forEach((value, key) => {
+                    console.log(`${key}: ${value}`);
+                });
+
+                // Intentar obtener el token desde 'Authorization'
+                return response.headers.get('Authorization');
+            })
+            .then(token => {
+                if (token) {
+                    console.log('JWT Token:', token);
+                } else {
+                    console.warn('Token no encontrado en el header "Authorization".');
+                }
+            })
+            .catch(error => console.error('Error:', error));
     };
-
-    fetch('http://localhost:8080/login', requestOptions)
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
     return (
         <div>
             <div className="form-container">
