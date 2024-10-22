@@ -33,17 +33,10 @@ const Page = () => {
         };
 
         fetch('http://localhost:8080/login', requestOptions)
-            .then(response => {
-                // Usar .forEach para recorrer los headers
-                response.headers.forEach((value, key) => {
-                    console.log(`${key}: ${value}`);
-                });
-
-                // Intentar obtener el token desde 'Authorization'
-                return response.headers.get('Authorization');
-            })
+            .then(response => response.headers.get('Authorization'))
             .then(token => {
                 if (token) {
+                    localStorage.setItem('sessionToken', token);
                     console.log('JWT Token:', token);
                 } else {
                     console.warn('Token no encontrado en el header "Authorization".');
