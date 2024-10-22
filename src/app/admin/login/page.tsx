@@ -55,7 +55,7 @@ const Page = () => {
         <div>
             <div className="form-container">
                 <h1 className="text-primary font-bold">
-                    CREA UNA CUENTA
+                    INICIO DE SESIÓN
                 </h1>
                 <form onSubmit={handleLogin}>
                     <TextField
@@ -73,7 +73,7 @@ const Page = () => {
                     <button
                         className="primary-button font-bold"
                         type="submit">
-                        REGÍSTRATE
+                        INICIAR SESIÓN
                     </button>
                 </form>
                 <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
