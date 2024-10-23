@@ -3,7 +3,8 @@ import CrudHeader from '@/components/AdminCrud/CrudHeader'
 import CrudBody from '@/components/AdminCrud/CrudBody'
 import { useFetchData } from '@/services/useFetchData'
 import { useState, useEffect } from 'react'
-import Modal from '@/components/Modal/Modal' // Importamos el Modal
+import ModalBase from '@/components/Modal/ModalBase' // Importamos el ModalBase
+import BorderTextField from '@/components/Inputs/BorderTextField' // Importamos el BorderTextField
 
 export default function roles() {
 
@@ -50,7 +51,18 @@ export default function roles() {
 
       {isModalVisible && (
         <div className="modal-overlay">
-          <Modal onClose={hideModal} />
+          <ModalBase
+            onClose={hideModal}
+            header='Crear nuevo Rol'
+            onSave={() => console.log('Guardar')}
+          >
+            <BorderTextField
+              name='roleName'
+              placeholder='Nombre del rol'
+              onChange={(e) => console.log('test')}
+              value='roleName'
+            />
+          </ModalBase>
         </div>
       )}
     </div>
