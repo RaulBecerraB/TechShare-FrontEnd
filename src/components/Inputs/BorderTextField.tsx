@@ -9,7 +9,7 @@ interface TextFieldProps {
 
 const TextField: React.FC<TextFieldProps> = ({ placeholder, name, value, onChange }) => {
     return (
-        <input className='text-sm p-[10px] mb-[15px] border-[1px] border-primary rounded-none'
+        <input className='text-sm p-[10px] mb-[15px] border-[1px] border-primary rounded-md'
             placeholder={placeholder}
             type="text"
             id={name}

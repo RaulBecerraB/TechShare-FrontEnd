@@ -13,6 +13,20 @@ export default function roles() {
   const [data, setData] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [formData, setFormData] = useState(
+    {
+      roleName: ''
+    }
+  )
+
+  // Manejar cambios en los inputs
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleSearchChange = (value: string) => setSearchTerm(value)
 
@@ -59,8 +73,8 @@ export default function roles() {
             <BorderTextField
               name='roleName'
               placeholder='Nombre del rol'
-              onChange={(e) => console.log('test')}
-              value='roleName'
+              onChange={handleChange}
+              value={formData.roleName}
             />
           </ModalBase>
         </div>
