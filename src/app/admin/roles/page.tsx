@@ -81,7 +81,7 @@ export default function roles() {
             <BorderTextField
               name='roleName'
               placeholder='Nombre del rol'
-              onChange={(e) => handleChange({ ...formData, roleName: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
               value={formData.roleName}
             />
           </ModalBase>

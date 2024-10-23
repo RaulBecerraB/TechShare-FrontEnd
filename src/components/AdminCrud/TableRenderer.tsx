@@ -8,16 +8,17 @@ interface TableRowsProps {
 const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords }) => {
     return (
         <>
-            {currentRecords.map((row: any) => (
-                <tr key={row.id}>
-                    {headers.map((header: any) => (
-                        <td key={header + row.id}>{row[header]}</td>
+            {currentRecords.map((row: any, rowIndex: number) => (
+                <tr key={`row-${rowIndex}`}>
+                    {headers.map((header: string, headerIndex: number) => (
+                        <td key={`cell-${rowIndex}-${headerIndex}`}>{row[header]}</td>
                     ))}
-                    <td />
-                    <td>
+                    <td key={`action-edit-${rowIndex}`}>
                         <button className="action-button" onClick={() => console.log('Edit', row.id)}>
                             <FaEdit />
                         </button>
+                    </td>
+                    <td key={`action-delete-${rowIndex}`}>
                         <button className="action-button" onClick={() => console.log('Delete', row.id)}>
                             <FaTrash />
                         </button>
@@ -35,8 +36,8 @@ interface TableHeadersProps {
 const TableHeaders: React.FC<TableHeadersProps> = ({ headers }) => {
     return (
         <tr className='text-lg'>
-            {headers.map((header: string) => (
-                <th key={header}>{header.toUpperCase()}</th>
+            {headers.map((header: string, index: number) => (
+                <th key={`header-${index}`}>{header.toUpperCase()}</th>
             ))}
             <th />
             <th />
