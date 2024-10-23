@@ -11,7 +11,7 @@ interface ModalProps {
     onClose: () => void; // Función para cerrar el modal
     header: string;
     children?: ReactNode;
-    onSubmit: any;
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export default function Modal({ onClose, header, children, onSubmit }: ModalProps) {

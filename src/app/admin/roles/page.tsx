@@ -13,7 +13,7 @@ export default function roles() {
   const [data, setData] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [formData, handleChange] = useState({ roleName: '' })
+  const [formData, setFormData] = useState<{ roleName: string }>({ roleName: '' });
 
   const handleSearchChange = (value: string) => setSearchTerm(value)
 
