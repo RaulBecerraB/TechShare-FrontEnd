@@ -37,7 +37,6 @@ const Page = () => {
             .then(token => {
                 if (token) {
                     localStorage.setItem('sessionToken', token);
-                    console.log('JWT Token:', token);
                 } else {
                     console.warn('Token no encontrado en el header "Authorization".');
                 }

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Modal from '@/components/Modal/Modal' // Importamos el Modal
 
 export default function roles() {
+
   //const dataUrl = '/dummyData/dummy.json'
   //const { data } = useFetchData<any>(dataUrl)
   const [data, setData] = useState([])
