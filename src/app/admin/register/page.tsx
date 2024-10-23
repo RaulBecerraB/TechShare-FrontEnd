@@ -7,25 +7,17 @@ import PasswordField from "@/components/Inputs/PasswordField";
 import '@/styles/containers.css'
 import '@/styles/form.css'
 import '@/styles/buttons.css'
+import { useForm } from "@/app/hooks/useForm";
 
 export default function Register() {
-    // Estados para capturar los valores de los inputs
-    const [formData, setFormData] = useState({
+
+    const [formData, handleChange] = useForm({
         first_name: '',
         last_name: '',
         email: '',
         password: '',
         confirmPassword: ''
     });
-
-    // Manejar cambios en los inputs
-    const handleChange = (e: any) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
 
     // Manejo del registro
     const handleRegister = (e: any) => {
