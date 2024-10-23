@@ -5,20 +5,13 @@ import TextField from '@/components/Inputs/TextField';
 import PasswordField from '@/components/Inputs/PasswordField';
 import '@/styles/form.css';
 import '@/styles/buttons.css';
+import { useForm } from '@/app/hooks/useForm';
 
 const Page = () => {
-    const [formData, setFormData] = useState({
+    const [formData, handleChange] = useForm({
         email: '',
-        password: ''
+        password: '',
     });
-
-    const handleChange = (e: any) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
 
     const handleLogin = (e: any) => {
         e.preventDefault(); // Evitar que el formulario se envíe por defecto
@@ -37,7 +30,6 @@ const Page = () => {
             .then(token => {
                 if (token) {
                     localStorage.setItem('sessionToken', token);
-                    console.log('JWT Token:', token);
                 } else {
                     console.warn('Token no encontrado en el header "Authorization".');
                 }
