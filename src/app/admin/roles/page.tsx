@@ -39,6 +39,27 @@ export default function roles() {
       .catch((error) => console.error("Error:", error));
   }
 
+  const handleRoleCreation = (e: any) => {
+    e.preventDefault();
+    fetch("http://localhost:8080/admin/role/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name: formData.roleName,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        fetchRoles(token);
+        hideModal();
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
   return (
     <div>
       <CrudHeader
@@ -55,12 +76,12 @@ export default function roles() {
           <ModalBase
             onClose={hideModal}
             header='Crear nuevo Rol'
-            onSave={() => console.log('Guardar')}
+            onSubmit={handleRoleCreation}
           >
             <BorderTextField
               name='roleName'
               placeholder='Nombre del rol'
-              onChange={handleChange}
+              onChange={(e) => handleChange({ ...formData, roleName: e.target.value })}
               value={formData.roleName}
             />
           </ModalBase>

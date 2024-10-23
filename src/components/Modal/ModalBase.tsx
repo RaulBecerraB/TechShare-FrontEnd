@@ -10,13 +10,13 @@ import SecondaryButton from '@/components/Buttons/SecondaryButton'
 interface ModalProps {
     onClose: () => void; // Función para cerrar el modal
     header: string;
-    onSave: () => void;
     children?: ReactNode;
+    onSubmit: any;
 }
 
-export default function Modal({ onClose, header, onSave, children }: ModalProps) {
+export default function Modal({ onClose, header, children, onSubmit }: ModalProps) {
     return (
-        <div>
+        <form onSubmit={onSubmit}>
             <div className='modal'>
                 <div className='border-b-[1px]'>
                     <h2 className='text-lg'>{header}</h2>
@@ -31,10 +31,10 @@ export default function Modal({ onClose, header, onSave, children }: ModalProps)
                     />
                     <PrimaryButton
                         buttonLabel='Guardar'
-                        buttonFunction={onSave}
+                        buttonFunction={() => { }}
                     />
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
