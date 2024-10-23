@@ -9,16 +9,15 @@ const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords }) => {
     return (
         <>
             {currentRecords.map((row: any, rowIndex: number) => (
-                <tr key={`row-${rowIndex}`}>
+                <tr key={`row-${row.id}-${rowIndex}`}>
                     {headers.map((header: string, headerIndex: number) => (
-                        <td key={`cell-${rowIndex}-${headerIndex}`}>{row[header]}</td>
+                        <td key={`${header}-${row.id}-${headerIndex}`}>{row[header]}</td>
                     ))}
-                    <td key={`action-edit-${rowIndex}`}>
+                    <td key={`empty-td-${row.id}`} />
+                    <td key={`actions-td-${row.id}`}>
                         <button className="action-button" onClick={() => console.log('Edit', row.id)}>
                             <FaEdit />
                         </button>
-                    </td>
-                    <td key={`action-delete-${rowIndex}`}>
                         <button className="action-button" onClick={() => console.log('Delete', row.id)}>
                             <FaTrash />
                         </button>
@@ -37,10 +36,10 @@ const TableHeaders: React.FC<TableHeadersProps> = ({ headers }) => {
     return (
         <tr className='text-lg'>
             {headers.map((header: string, index: number) => (
-                <th key={`header-${index}`}>{header.toUpperCase()}</th>
+                <th key={`${header}-${index}`}>{header.toUpperCase()}</th>
             ))}
-            <th />
-            <th />
+            <th key="empty-th-1" />
+            <th key="empty-th-2" />
         </tr>
     );
 };
