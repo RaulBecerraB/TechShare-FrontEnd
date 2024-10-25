@@ -4,7 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 
 export default function NavLinks() {
   return (
-    <div>
+    <>
       {links.map((link) => {
         const LinkIcon = FaIcons[link.icon];
         return (
@@ -19,6 +19,6 @@ export default function NavLinks() {
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
