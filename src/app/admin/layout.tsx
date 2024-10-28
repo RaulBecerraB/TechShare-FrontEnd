@@ -15,15 +15,13 @@ export default function AdminLayout(
     children: React.ReactNode;
   }>) {
   return (
-    <html>
-      <body className={`horizontal-flex`}>
+      <div className={`horizontal-flex`}>
         <div className="side-nav">
           <SideNav />
         </div>
         <div className="m-7" style={{ width: '100%' }}>
           {children}
         </div>
-      </body>
-    </html>
+      </div>
   );
 }
