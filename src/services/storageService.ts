@@ -1,4 +1,4 @@
-const TOKEN_KEY = "authToken";
+const TOKEN_KEY = "sessionToken";
 const USER_ID_KEY = "userId";
 const USER_EMAIL_KEY = "userEmail";
 const USER_NAME_KEY = "userName";

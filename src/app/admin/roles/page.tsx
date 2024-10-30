@@ -5,6 +5,7 @@ import { useFetchData } from '@/services/useFetchData'
 import { useState, useEffect } from 'react'
 import ModalBase from '@/components/Modal/ModalBase' // Importamos el ModalBase
 import BorderTextField from '@/components/Inputs/BorderTextField' // Importamos el BorderTextField
+import { useAuth } from '@/app/hooks/useAuth'
 
 export default function roles() {
 
@@ -21,7 +22,8 @@ export default function roles() {
   const hideModal = () => setIsModalVisible(false)
 
   const token = localStorage.getItem("sessionToken");
-
+  useAuth()
+  
   useEffect(() => {
     fetchRoles(token)
   }, [])
