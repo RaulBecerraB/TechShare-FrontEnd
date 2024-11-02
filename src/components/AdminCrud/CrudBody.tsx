@@ -9,9 +9,10 @@ interface CrudBodyProps {
     data: any;
     searchTerm: string;
     onDelete: (id: number) => void;
+    onEdit: (id: number) => void;
 }
 
-export default function CrudBody({ data, searchTerm, onDelete }: CrudBodyProps) {
+export default function CrudBody({ data, searchTerm, onDelete,onEdit }: CrudBodyProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredData, setFilteredData] = useState(data);
 
@@ -48,6 +49,7 @@ export default function CrudBody({ data, searchTerm, onDelete }: CrudBodyProps) 
                             headers={headers} 
                             currentRecords={currentRecords}
                             onDelete={onDelete} 
+                            onEdit={onEdit}
                         />
                     </tbody>
                 </table>

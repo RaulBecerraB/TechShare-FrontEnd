@@ -15,13 +15,21 @@ export default function roles() {
   //const { data } = useFetchData<any>(dataUrl)
   const [data, setData] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isCreateModalVisible, setCreateModalVisible] = useState(false)
+  const [clickedRoleId, setClickedRoleId] = useState<number | null>(null)
+  const [isEditModalVisible, setEditModalVisible] = useState(false)
   const [formData, setFormData] = useState<{ roleName: string }>({ roleName: '' });
 
   const handleSearchChange = (value: string) => setSearchTerm(value)
 
-  const showModal = () => setIsModalVisible(true)
-  const hideModal = () => setIsModalVisible(false)
+  const showCreateModal = () => setCreateModalVisible(true)
+  const hideCreateModal = () => setCreateModalVisible(false)
+
+  const showEditModal = (id: number) => {
+    setEditModalVisible(true);
+    setClickedRoleId(id);
+  }
+  const hideEditModal = () => setEditModalVisible(false)
 
   useAuth()
   const token = getToken()
@@ -58,7 +66,7 @@ export default function roles() {
       .then((data) => {
         console.log(data);
         fetchRoles(token);
-        hideModal();
+        hideCreateModal();
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -80,6 +88,26 @@ export default function roles() {
     .catch((error) => console.error("Error:", error));
 };
 
+const handleRoleUpdate = (id: number) => {
+    console.log("Updating role with ID:", id); // Confirma que recibes el ID correcto
+    fetch(`http://localhost:8080/admin/role/update/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            name: formData.roleName,
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        fetchRoles(token); // Refresca la lista después de actualizar
+        hideEditModal();
+    })
+    .catch((error) => console.error("Error:", error));
+  }
 
   return (
     <div>
@@ -87,19 +115,20 @@ export default function roles() {
         title='Roles'
         buttonLabel='AÑADIR ROL'
         buttonDisabled={false}
-        buttonFunction={showModal}
+        buttonFunction={showCreateModal}
         onSearchChange={handleSearchChange}
       />
       <CrudBody 
       data={data} 
       searchTerm={searchTerm} 
       onDelete={handleRoleDeletion}
+      onEdit={showEditModal}
       />
 
-      {isModalVisible && (
+      {isCreateModalVisible && (
         <div className="modal-overlay">
           <ModalBase
-            onClose={hideModal}
+            onClose={hideCreateModal}
             header='Crear nuevo Rol'
             onSubmit={handleRoleCreation}
           >
@@ -111,6 +140,22 @@ export default function roles() {
             />
           </ModalBase>
         </div>
+      )}
+      {isEditModalVisible && (
+        <div className="modal-overlay">
+          <ModalBase
+            onClose={() => setEditModalVisible(false)}
+            header='Editar Rol'
+            onSubmit={() => handleRoleUpdate(clickedRoleId!)}
+          >
+            <BorderTextField
+              name='roleName'
+              placeholder='Nombre del rol'
+              onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
+              value={formData.roleName}
+            />
+          </ModalBase>
+          </div>
       )}
     </div>
   )

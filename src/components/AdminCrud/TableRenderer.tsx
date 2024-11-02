@@ -4,9 +4,10 @@ interface TableRowsProps {
     headers: string[];
     currentRecords: any[];
     onDelete: (id: number) => void;
+    onEdit: (id: number) => void;
 }
 
-const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords, onDelete }) => {
+const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords, onDelete ,onEdit}) => {
     return (
         <>
             {currentRecords.map((row: any, rowIndex: number) => {
@@ -21,7 +22,7 @@ const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords, onDelete
                         ))}
                         <td key={`empty-td-${idValue}`} />
                         <td key={`actions-td-${idValue}`}>
-                            <button className="action-button" onClick={() => console.log('Editing row with id:', idValue)}>
+                            <button className="action-button" onClick={() => onEdit(idValue)}>
                                 <FaEdit />
                             </button>
                             <button className="action-button" onClick={() => onDelete(idValue)}>
