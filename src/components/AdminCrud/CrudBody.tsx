@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
-import { isDataEmpty, filterHeadersWithId } from '@/utils/utils';
+import { isDataEmpty } from '@/utils/utils'; // Eliminamos filterHeadersWithId
 import { TableHeaders, TableRows } from '@/components/AdminCrud/TableRenderer';
 import Pagination from '@/components/AdminCrud/Pagination';
 
 interface CrudBodyProps {
     data: any;
-    searchTerm: string; // Nueva prop para el término de búsqueda
+    searchTerm: string;
+    onDelete: (id: number) => void;
 }
 
-export default function CrudBody({ data, searchTerm }: CrudBodyProps) {
+export default function CrudBody({ data, searchTerm, onDelete }: CrudBodyProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredData, setFilteredData] = useState(data);
 
@@ -21,12 +22,12 @@ export default function CrudBody({ data, searchTerm }: CrudBodyProps) {
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    // No queremos mostrar el id en la tabla
-    const headers = !isDataEmpty(data) ? filterHeadersWithId(data) : [];
+    // Muestra todos los encabezados, incluyendo "id"
+    const headers = !isDataEmpty(data) ? Object.keys(data[0]) : [];
 
     // Filtrar los datos cuando el término de búsqueda cambia
     useEffect(() => {
-        const lowercasedFilter = (searchTerm).toLowerCase();
+        const lowercasedFilter = searchTerm.toLowerCase();
         const filtered = data.filter((item: any) =>
             Object.values(item).some((val: any) =>
                 String(val).toLowerCase().includes(lowercasedFilter)
@@ -43,7 +44,11 @@ export default function CrudBody({ data, searchTerm }: CrudBodyProps) {
                         <TableHeaders headers={headers} />
                     </thead>
                     <tbody>
-                        <TableRows headers={headers} currentRecords={currentRecords} />
+                        <TableRows 
+                            headers={headers} 
+                            currentRecords={currentRecords}
+                            onDelete={onDelete} 
+                        />
                     </tbody>
                 </table>
             </div>

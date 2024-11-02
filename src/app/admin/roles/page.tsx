@@ -65,6 +65,7 @@ export default function roles() {
 
   const handleRoleDeletion = (id: number) =>
     {
+      console.log(id)
       fetch(`http://localhost:8080/admin/role/delete/${id}`, {
         method: "DELETE",
         headers: {
@@ -89,7 +90,11 @@ export default function roles() {
         buttonFunction={showModal}
         onSearchChange={handleSearchChange}
       />
-      <CrudBody data={data} searchTerm={searchTerm} />
+      <CrudBody 
+      data={data} 
+      searchTerm={searchTerm} 
+      onDelete={handleRoleDeletion}
+      />
 
       {isModalVisible && (
         <div className="modal-overlay">

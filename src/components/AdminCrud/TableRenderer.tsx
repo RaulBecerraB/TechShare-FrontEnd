@@ -3,9 +3,10 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 interface TableRowsProps {
     headers: string[];
     currentRecords: any[];
+    onDelete: (id: number) => void;
 }
 
-const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords }) => {
+const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords, onDelete}) => {
     return (
         <>
             {currentRecords.map((row: any, rowIndex: number) => (
@@ -15,10 +16,10 @@ const TableRows: React.FC<TableRowsProps> = ({ headers, currentRecords }) => {
                     ))}
                     <td key={`empty-td-${row.id}`} />
                     <td key={`actions-td-${row.id}`}>
-                        <button className="action-button" onClick={() => console.log('Edit', row.id)}>
+                        <button className="action-button" onClick={() => console.log('a')}>
                             <FaEdit />
                         </button>
-                        <button className="action-button" onClick={() => console.log('Delete', row.id)}>
+                        <button className="action-button" onClick={() => { console.log('Deleting row with id:', rowIndex); onDelete(row.id); }}>
                             <FaTrash />
                         </button>
                     </td>
