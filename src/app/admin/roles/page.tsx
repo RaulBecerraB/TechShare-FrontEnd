@@ -63,23 +63,23 @@ export default function roles() {
       .catch((error) => console.error("Error:", error));
   }
 
-  const handleRoleDeletion = (id: number) =>
-    {
-      console.log(id)
-      fetch(`http://localhost:8080/admin/role/delete/${id}`, {
+  const handleRoleDeletion = (id: number) => {
+    console.log("Deleting role with ID:", id); // Confirma que recibes el ID correcto
+    fetch(`http://localhost:8080/admin/role/delete/${id}`, {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
         },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          fetchRoles(token);
-        })
-        .catch((error) => console.error("Error:", error));
-    }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        fetchRoles(token); // Refresca la lista después de eliminar
+    })
+    .catch((error) => console.error("Error:", error));
+};
+
 
   return (
     <div>
