@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 import ModalBase from '@/components/Modal/ModalBase' // Importamos el ModalBase
 import BorderTextField from '@/components/Inputs/BorderTextField' // Importamos el BorderTextField
 import { useAuth } from '@/app/hooks/useAuth'
+import {getToken} from '@/services/storageService'
+import { get } from 'http'
 
 export default function roles() {
 
@@ -21,8 +23,8 @@ export default function roles() {
   const showModal = () => setIsModalVisible(true)
   const hideModal = () => setIsModalVisible(false)
 
-  const token = localStorage.getItem("sessionToken");
   useAuth()
+  const token = getToken()
   
   useEffect(() => {
     fetchRoles(token)
@@ -38,7 +40,6 @@ export default function roles() {
     })
       .then((response) => response.json())
       .then((data) => setData(data))
-      .catch((error) => console.error("Error:", error));
   }
 
   const handleRoleCreation = (e: any) => {
@@ -61,6 +62,23 @@ export default function roles() {
       })
       .catch((error) => console.error("Error:", error));
   }
+
+  const handleRoleDeletion = (id: number) =>
+    {
+      fetch(`http://localhost:8080/admin/role/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          fetchRoles(token);
+        })
+        .catch((error) => console.error("Error:", error));
+    }
 
   return (
     <div>
