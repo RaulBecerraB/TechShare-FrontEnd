@@ -13,23 +13,38 @@ export default function roles() {
 
   //const dataUrl = '/dummyData/dummy.json'
   //const { data } = useFetchData<any>(dataUrl)
-  const [data, setData] = useState([])
+  type Role = {
+    roleId: number;
+    name: string;
+  };
+  
+  const [data, setData] = useState<Role[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [isCreateModalVisible, setCreateModalVisible] = useState(false)
   const [clickedRoleId, setClickedRoleId] = useState<number | null>(null)
   const [isEditModalVisible, setEditModalVisible] = useState(false)
-  const [formData, setFormData] = useState<{ roleName: string }>({ roleName: '' });
+  const [formData, setFormData] = useState<{ roleName: string }>({ roleName: '' })
 
   const handleSearchChange = (value: string) => setSearchTerm(value)
 
   const showCreateModal = () => setCreateModalVisible(true)
   const hideCreateModal = () => setCreateModalVisible(false)
-
-  const showEditModal = (id: number) => {
-    setEditModalVisible(true);
-    setClickedRoleId(id);
-  }
+  const showEditModal = () => setEditModalVisible(true)
   const hideEditModal = () => setEditModalVisible(false)
+
+  const editButtonClicked = (id: number) => {
+    // Encuentra el rol que coincida con el roleId seleccionado
+    const selectedRole = data.find((role) => role.roleId === id);
+    
+    // Si el rol existe, actualiza formData con name y muestra el modal de edición
+    if (selectedRole) {
+      setClickedRoleId(id);
+      console.log("Selected role:", selectedRole); // Confirma que el rol seleccionado es correcto
+      setFormData({ roleName: selectedRole.name }); // Usa "name" para cargar en formData
+      showEditModal();
+    }
+  };
+  
 
   useAuth()
   const token = getToken()
@@ -64,11 +79,11 @@ export default function roles() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        fetchRoles(token);
-        hideCreateModal();
+        console.log(data)
+        fetchRoles(token)
+        hideCreateModal()
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error))
   }
 
   const handleRoleDeletion = (id: number) => {
@@ -85,7 +100,7 @@ export default function roles() {
         console.log(data);
         fetchRoles(token); // Refresca la lista después de eliminar
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => console.error("Error:", error))
 };
 
 const handleRoleUpdate = (id: number) => {
@@ -106,7 +121,7 @@ const handleRoleUpdate = (id: number) => {
         fetchRoles(token); // Refresca la lista después de actualizar
         hideEditModal();
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => console.error("Error:", error))
   }
 
   return (
@@ -122,9 +137,8 @@ const handleRoleUpdate = (id: number) => {
       data={data} 
       searchTerm={searchTerm} 
       onDelete={handleRoleDeletion}
-      onEdit={showEditModal}
+      onEdit={editButtonClicked}
       />
-
       {isCreateModalVisible && (
         <div className="modal-overlay">
           <ModalBase
@@ -142,21 +156,22 @@ const handleRoleUpdate = (id: number) => {
         </div>
       )}
       {isEditModalVisible && (
-        <div className="modal-overlay">
-          <ModalBase
-            onClose={() => setEditModalVisible(false)}
-            header='Editar Rol'
-            onSubmit={() => handleRoleUpdate(clickedRoleId!)}
-          >
-            <BorderTextField
-              name='roleName'
-              placeholder='Nombre del rol'
-              onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
-              value={formData.roleName}
-            />
-          </ModalBase>
-          </div>
-      )}
+  <div className="modal-overlay">
+    <ModalBase
+      onClose={hideEditModal}
+      header='Editar Rol'
+      onSubmit={() => handleRoleUpdate(clickedRoleId!)}
+    >
+      <BorderTextField
+        name='roleName'
+        placeholder='Nombre del rol'
+        onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
+        value={formData.roleName} // Carga el nombre en el campo de texto
+      />
+    </ModalBase>
+  </div>
+)}
+
     </div>
   )
 }
