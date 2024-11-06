@@ -50,8 +50,20 @@ export default function roles() {
       setFormData({ roleName: selectedRole.name }); // Usa "name" para cargar en formData
       showEditModal();
     }
-  };
+  }
 
+  const deleteButtonClicked = (id: number) => {
+    // Encuentra el rol que coincida con el roleId seleccionado
+    const selectedRole = data.find((role) => role.roleId === id);
+
+    // Si el rol existe, actualiza formData con name y muestra el modal de edición
+    if (selectedRole) {
+      setClickedRoleId(id);
+      console.log("Selected role:", selectedRole); // Confirma que el rol seleccionado es correcto
+      setFormData({ roleName: selectedRole.name }); // Usa "name" para cargar en formData
+      showDeleteModal();
+    }
+  }
 
   useAuth()
   const token = getToken()
@@ -74,6 +86,7 @@ export default function roles() {
 
   const handleRoleCreation = (e: any) => {
     e.preventDefault();
+    setFormData({ roleName: '' });
     fetch("http://localhost:8080/admin/role/create", {
       method: "POST",
       headers: {
@@ -104,8 +117,9 @@ export default function roles() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        fetchRoles(token); // Refresca la lista después de eliminar
+        console.log(data)
+        fetchRoles(token)
+        hideDeleteModal()
       })
       .catch((error) => console.error("Error:", error))
   };
@@ -124,9 +138,9 @@ export default function roles() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        fetchRoles(token); // Refresca la lista después de actualizar
-        hideEditModal();
+        console.log(data)
+        fetchRoles(token)
+        hideEditModal()
       })
       .catch((error) => console.error("Error:", error))
   }
@@ -143,7 +157,7 @@ export default function roles() {
       <CrudBody
         data={data}
         searchTerm={searchTerm}
-        onDelete={handleRoleDeletion}
+        onDelete={deleteButtonClicked}
         onEdit={editButtonClicked}
       />
       {isCreateModalVisible && (
@@ -178,7 +192,15 @@ export default function roles() {
           </ModalBase>
         </div>
       )}
-
+      {isDeleteModalVisible && (
+        <div className="modal-overlay">
+          <ModalBase
+            onClose={hideDeleteModal}
+            header='Confirmar borrado de rol'
+            onSubmit={() => handleRoleDeletion(clickedRoleId!)}>
+            <p>¿Estás seguro de que deseas borrar este rol</p>
+          </ModalBase>
+        </div>)}
     </div>
   )
 }
