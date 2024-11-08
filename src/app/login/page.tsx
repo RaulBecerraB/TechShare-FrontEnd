@@ -6,6 +6,15 @@ import PasswordField from '@/components/Inputs/PasswordField';
 import '@/styles/form.css';
 import '@/styles/buttons.css';
 import { useForm } from '@/app/hooks/useForm';
+import {
+    getToken,
+    clearStorage,
+    getUserEmail,
+    getUserId,
+    getUserName,
+    setToken
+}
+    from '@/services/storageService';
 
 const Page = () => {
     const [formData, handleChange] = useForm({
@@ -29,7 +38,7 @@ const Page = () => {
             .then(response => response.headers.get('Authorization'))
             .then(token => {
                 if (token) {
-                    localStorage.setItem('sessionToken', token);
+                    setToken(token);
                 } else {
                     console.warn('Token no encontrado en el header "Authorization".');
                 }

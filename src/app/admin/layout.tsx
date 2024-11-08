@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { useForm } from "@/app/hooks/useForm"
 import SideNav from "@/components/SideNav/SideNav";
 import { inter } from "@/services/fonts"
+import { useAuth } from "@/app/hooks/useAuth"
 
 export const metadata: Metadata = {
   title: "Admin Page",
@@ -15,13 +16,13 @@ export default function AdminLayout(
     children: React.ReactNode;
   }>) {
   return (
-      <div className={`horizontal-flex`}>
-        <div className="side-nav">
-          <SideNav />
-        </div>
-        <div className="m-7" style={{ width: '100%' }}>
-          {children}
-        </div>
+    <div className={`horizontal-flex`}>
+      <div className="side-nav">
+        <SideNav />
       </div>
+      <div className="m-7" style={{ width: '100%' }}>
+        {children}
+      </div>
+    </div>
   );
 }
