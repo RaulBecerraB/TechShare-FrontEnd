@@ -24,8 +24,9 @@ export default function roles() {
         buttonLabel=''
         buttonFunction={() => alert('Adding stuff')}
         onSearchChange={handleSearchChange} // Asegúrate de pasar esta función
+        buttonDisabled={true}
       />
-      <CrudBody data={data} searchTerm={searchTerm} /> {/* Pasar el término de búsqueda */}
+      <CrudBody data={data} searchTerm={searchTerm} onDelete={() => console.log('hi')} onEdit={() => console.log('hi')} /> {/* Pasar el término de búsqueda */}
     </div>
   )
 }

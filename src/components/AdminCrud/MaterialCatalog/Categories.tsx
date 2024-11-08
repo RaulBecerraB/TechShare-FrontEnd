@@ -9,14 +9,14 @@ import { useAuth } from '@/app/hooks/useAuth'
 import { getToken } from '@/services/storageService'
 import { get } from 'http'
 
-export default function roles() {
-
-  type Role = {
-    roleId: number;
-    name: string;
+export default function categories() {
+  
+  type Category = {
+    name: number;
+    image: string;
   };
 
-  const [data, setData] = useState<Role[]>([])
+  const [data, setData] = useState<Category[]>([])
   const [searchTerm, setSearchTerm] = useState('')
 
   const [isCreateModalVisible, setCreateModalVisible] = useState(false)
@@ -104,9 +104,9 @@ export default function roles() {
       .catch((error) => console.error("Error:", error))
   }
 
-  const handleRoleDeletion = (e:any) => {
-    e.preventDefault();
-    fetch(`http://localhost:8080/admin/role/delete/${clickedRoleId}`, {
+  const handleRoleDeletion = (id: number) => {
+    console.log("Deleting role with ID:", id); // Confirma que recibes el ID correcto
+    fetch(`http://localhost:8080/admin/role/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -122,8 +122,9 @@ export default function roles() {
       .catch((error) => console.error("Error:", error))
   };
 
-  const handleRoleUpdate = (e:any) => {
-    fetch(`http://localhost:8080/admin/role/update/${clickedRoleId}`, {
+  const handleRoleUpdate = (id: number) => {
+    console.log("Updating role with ID:", id); // Confirma que recibes el ID correcto
+    fetch(`http://localhost:8080/admin/role/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -178,7 +179,7 @@ export default function roles() {
           <ModalBase
             onClose={hideEditModal}
             header='Editar Rol'
-            onSubmit={handleRoleUpdate}
+            onSubmit={() => handleRoleUpdate(clickedRoleId!)}
           >
             <BorderTextField
               name='roleName'
@@ -194,7 +195,7 @@ export default function roles() {
           <ModalBase
             onClose={hideDeleteModal}
             header='Confirmar borrado de rol'
-            onSubmit={handleRoleDeletion}>
+            onSubmit={() => handleRoleDeletion(clickedRoleId!)}>
             <p>¿Estás seguro de que deseas borrar este rol</p>
           </ModalBase>
         </div>)}
