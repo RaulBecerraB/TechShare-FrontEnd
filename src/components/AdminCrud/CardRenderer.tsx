@@ -8,24 +8,24 @@ interface CardRendererProps {
 
 const CardRenderer: React.FC<CardRendererProps> = ({ currentRecords, onDelete, onEdit }) => {
     return (
-        <div className="flex flex-wrap gap-6 justify-around">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
             {currentRecords.map((item, index) => {
                 const idKey = Object.keys(item)[0];
                 const idValue = item[idKey];
 
                 return (
-                    <div key={`card-${idValue}-${index}`} className="bg-white rounded-lg shadow-lg w-80 p-4 flex items-start space-x-4 relative">
+                    <div key={`card-${idValue}-${index}`} className="bg-white rounded-lg shadow-lg w-full p-4 flex items-start space-x-4 relative">
                         {item.imageUrl ? (
                             <img
                                 src={item.imageUrl}
                                 alt={item.name}
-                                className="w-16 h-16 object-cover rounded-md border border-gray-300"
+                                className="w-20 h-20 object-cover rounded-md border border-gray-300"
                                 onError={(e) => {
-                                    e.currentTarget.src = "/fallback-image.png"; // Reemplaza con una imagen de respaldo en caso de error
+                                    e.currentTarget.src = "/fallback-image.png"; // Imagen de respaldo en caso de error
                                 }}
                             />
                         ) : (
-                            <div className="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center">
+                            <div className="w-20 h-20 bg-gray-200 rounded-md flex items-center justify-center">
                                 <span className="text-gray-500">No Image</span>
                             </div>
                         )}
@@ -35,7 +35,7 @@ const CardRenderer: React.FC<CardRendererProps> = ({ currentRecords, onDelete, o
                         </div>
                         <div className="absolute top-2 right-2 flex space-x-2">
                             <button
-                                className="action-button"
+                                className="action-button" // Color original azul
                                 onClick={() => onEdit(idValue)}
                             >
                                 <FaEdit />
