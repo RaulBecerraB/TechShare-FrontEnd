@@ -16,7 +16,7 @@
     },
     {
       "name": "Catálogo",
-      "href": "/admin/categories",
+      "href": "/admin/catalog",
       "icon": "FaFileAlt"
     },
     {

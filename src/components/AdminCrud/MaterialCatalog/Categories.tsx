@@ -1,30 +1,29 @@
 "use client"
 import CrudHeader from '@/components/AdminCrud/CrudHeader'
-import CrudBody from '@/components/AdminCrud/CrudBody'
+import CrudBody from '@/components/AdminCrud/CrudBodyWithImages'
 import { useFetchData } from '@/services/useFetchData'
 import { useState, useEffect } from 'react'
-import ModalBase from '@/components/Modal/ModalBase' // Importamos el ModalBase
-import BorderTextField from '@/components/Inputs/BorderTextField' // Importamos el BorderTextField
+import ModalBase from '@/components/Modal/ModalBase'
+import BorderTextField from '@/components/Inputs/BorderTextField'
 import { useAuth } from '@/app/hooks/useAuth'
 import { getToken } from '@/services/storageService'
-import { get } from 'http'
 
-export default function categories() {
-  
+export default function Categories() {
+
   type Category = {
-    name: number;
-    image: string;
+    categoryId: number;
+    name: string;
+    description?: string;
+    imageUrl?: string;
   };
 
   const [data, setData] = useState<Category[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-
   const [isCreateModalVisible, setCreateModalVisible] = useState(false)
   const [isEditModalVisible, setEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
-
-  const [clickedRoleId, setClickedRoleId] = useState<number | null>(null)
-  const [formData, setFormData] = useState<{ roleName: string }>({ roleName: '' })
+  const [clickedCategoryId, setClickedCategoryId] = useState<number | null>(null)
+  const [formData, setFormData] = useState<{ name: string; description?: string; image?: File | null }>({ name: '', description: '', image: null })
 
   const handleSearchChange = (value: string) => setSearchTerm(value)
 
@@ -38,107 +37,105 @@ export default function categories() {
   const hideDeleteModal = () => setDeleteModalVisible(false)
 
   const editButtonClicked = (id: number) => {
-    // Encuentra el rol que coincida con el roleId seleccionado
-    const selectedRole = data.find((role) => role.roleId === id);
-
-    // Si el rol existe, actualiza formData con name y muestra el modal de edición
-    if (selectedRole) {
-      setClickedRoleId(id);
-      console.log("Selected role:", selectedRole); // Confirma que el rol seleccionado es correcto
-      setFormData({ roleName: selectedRole.name }); // Usa "name" para cargar en formData
-      showEditModal();
+    const selectedCategory = data.find((category) => category.categoryId === id)
+    if (selectedCategory) {
+      setClickedCategoryId(id)
+      setFormData({ name: selectedCategory.name, description: selectedCategory.description, image: null })
+      showEditModal()
     }
   }
 
   const deleteButtonClicked = (id: number) => {
-    // Encuentra el rol que coincida con el roleId seleccionado
-    const selectedRole = data.find((role) => role.roleId === id);
-
-    // Si el rol existe, actualiza formData con name y muestra el modal de edición
-    if (selectedRole) {
-      setClickedRoleId(id);
-      console.log("Selected role:", selectedRole); // Confirma que el rol seleccionado es correcto
-      setFormData({ roleName: selectedRole.name }); // Usa "name" para cargar en formData
-      showDeleteModal();
-    }
+    setClickedCategoryId(id)
+    showDeleteModal()
   }
 
   useAuth()
   const token = getToken()
 
   useEffect(() => {
-    fetchRoles(token)
+    fetchCategories(token)
   }, [])
 
-  const fetchRoles = (token: any) => {
-    fetch("http://localhost:8080/admin/role/all", {
+  const fetchCategories = (token: any) => {
+    fetch("http://localhost:8080/categories/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+        return response.json()
+      })
       .then((data) => setData(data))
   }
 
-  const handleRoleCreation = (e: any) => {
-    e.preventDefault();
-    setFormData({ roleName: '' });
-    fetch("http://localhost:8080/admin/role/create", {
+  const handleCategoryCreation = (e: any) => {
+    e.preventDefault()
+    const formDataObj = new FormData()
+    formDataObj.append('name', formData.name)
+    if (formData.description) formDataObj.append('description', formData.description)
+    if (formData.image) formDataObj.append('image', formData.image)
+
+    fetch("http://localhost:8080/categories/create", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name: formData.roleName,
-      }),
+      body: formDataObj,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+        return response.json()
+      })
       .then((data) => {
-        console.log(data)
-        fetchRoles(token)
+        fetchCategories(token)
         hideCreateModal()
       })
       .catch((error) => console.error("Error:", error))
   }
 
-  const handleRoleDeletion = (id: number) => {
-    console.log("Deleting role with ID:", id); // Confirma que recibes el ID correcto
-    fetch(`http://localhost:8080/admin/role/delete/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        fetchRoles(token)
-        hideDeleteModal()
-      })
-      .catch((error) => console.error("Error:", error))
-  };
+  const handleCategoryUpdate = (e: any) => {
+    e.preventDefault()
+    const formDataObj = new FormData()
+    formDataObj.append('name', formData.name)
+    if (formData.description) formDataObj.append('description', formData.description)
+    if (formData.image) formDataObj.append('image', formData.image)
 
-  const handleRoleUpdate = (id: number) => {
-    console.log("Updating role with ID:", id); // Confirma que recibes el ID correcto
-    fetch(`http://localhost:8080/admin/role/update/${id}`, {
+    fetch(`http://localhost:8080/categories/update/${clickedCategoryId}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name: formData.roleName,
-      }),
+      body: formDataObj,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+        return response.json()
+      })
       .then((data) => {
-        console.log(data)
-        fetchRoles(token)
+        fetchCategories(token)
         hideEditModal()
+      })
+      .catch((error) => console.error("Error:", error))
+  }
+
+  const handleCategoryDeletion = (e: any) => {
+    e.preventDefault()
+    fetch(`http://localhost:8080/categories/delete/${clickedCategoryId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        console.log(response)
+        if (response.status === 204) {
+          fetchCategories(token)
+          hideDeleteModal()
+        }
       })
       .catch((error) => console.error("Error:", error))
   }
@@ -146,8 +143,8 @@ export default function categories() {
   return (
     <div>
       <CrudHeader
-        title='Roles'
-        buttonLabel='AÑADIR ROL'
+        title='Categories'
+        buttonLabel='Add Category'
         buttonDisabled={false}
         buttonFunction={showCreateModal}
         onSearchChange={handleSearchChange}
@@ -162,14 +159,24 @@ export default function categories() {
         <div className="modal-overlay">
           <ModalBase
             onClose={hideCreateModal}
-            header='Crear nuevo Rol'
-            onSubmit={handleRoleCreation}
+            header='Create New Category'
+            onSubmit={handleCategoryCreation}
           >
             <BorderTextField
-              name='roleName'
-              placeholder='Nombre del rol'
-              onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
-              value={formData.roleName}
+              name='name'
+              placeholder='Category Name'
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              value={formData.name}
+            />
+            <BorderTextField
+              name='description'
+              placeholder='Description'
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              value={formData.description}
+            />
+            <input
+              type="file"
+              onChange={(e) => setFormData({ ...formData, image: e.target.files ? e.target.files[0] : null })}
             />
           </ModalBase>
         </div>
@@ -178,14 +185,24 @@ export default function categories() {
         <div className="modal-overlay">
           <ModalBase
             onClose={hideEditModal}
-            header='Editar Rol'
-            onSubmit={() => handleRoleUpdate(clickedRoleId!)}
+            header='Edit Category'
+            onSubmit={handleCategoryUpdate}
           >
             <BorderTextField
-              name='roleName'
-              placeholder='Nombre del rol'
-              onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
-              value={formData.roleName} // Carga el nombre en el campo de texto
+              name='name'
+              placeholder='Category Name'
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              value={formData.name}
+            />
+            <BorderTextField
+              name='description'
+              placeholder='Description'
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              value={formData.description}
+            />
+            <input
+              type="file"
+              onChange={(e) => setFormData({ ...formData, image: e.target.files ? e.target.files[0] : null })}
             />
           </ModalBase>
         </div>
@@ -194,11 +211,13 @@ export default function categories() {
         <div className="modal-overlay">
           <ModalBase
             onClose={hideDeleteModal}
-            header='Confirmar borrado de rol'
-            onSubmit={() => handleRoleDeletion(clickedRoleId!)}>
-            <p>¿Estás seguro de que deseas borrar este rol</p>
+            header='Confirm Delete Category'
+            onSubmit={handleCategoryDeletion}
+          >
+            <p>Are you sure you want to delete this category?</p>
           </ModalBase>
-        </div>)}
+        </div>
+      )}
     </div>
   )
 }
