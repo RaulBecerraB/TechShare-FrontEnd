@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '@/styles/crud-table.css';
 import '@/styles/pagination.css';
-import { isDataEmpty } from '@/utils/utils'; // Eliminamos filterHeadersWithId
-import { TableHeaders, TableRows } from '@/components/AdminCrud/TableRenderer';
+import CardRenderer from '@/components/AdminCrud/CardRenderer';
 import Pagination from '@/components/AdminCrud/Pagination';
+import '@/styles/cards.css';
 
 interface CrudBodyProps {
     data: any;
@@ -12,7 +12,7 @@ interface CrudBodyProps {
     onEdit: (id: number) => void;
 }
 
-export default function CrudBody({ data, searchTerm, onDelete,onEdit }: CrudBodyProps) {
+export default function CrudBody({ data, searchTerm, onDelete, onEdit }: CrudBodyProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredData, setFilteredData] = useState(data);
 
@@ -23,10 +23,6 @@ export default function CrudBody({ data, searchTerm, onDelete,onEdit }: CrudBody
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    // Muestra todos los encabezados, incluyendo "id"
-    const headers = data && data.length > 0 && !isDataEmpty(data) ? Object.keys(data[0]) : [];
-
-    // Filtrar los datos cuando el término de búsqueda cambia
     useEffect(() => {
         const lowercasedFilter = searchTerm.toLowerCase();
         const filtered = Array.isArray(data)
@@ -38,24 +34,15 @@ export default function CrudBody({ data, searchTerm, onDelete,onEdit }: CrudBody
             : [];
         setFilteredData(filtered);
     }, [searchTerm, data]);
-    
 
     return (
         <div>
-            <div className='white-container'>
-                <table className='crud-table'>
-                    <thead>
-                        <TableHeaders headers={headers} />
-                    </thead>
-                    <tbody>
-                        <TableRows 
-                            headers={headers} 
-                            currentRecords={currentRecords}
-                            onDelete={onDelete} 
-                            onEdit={onEdit}
-                        />
-                    </tbody>
-                </table>
+            <div className='card-list-container'>
+                <CardRenderer 
+                    currentRecords={currentRecords}
+                    onDelete={onDelete} 
+                    onEdit={onEdit}
+                />
             </div>
             <Pagination
                 currentPage={currentPage}

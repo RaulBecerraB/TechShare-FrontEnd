@@ -21,7 +21,7 @@ export default function Modal({ onClose, header, children, onSubmit }: ModalProp
                 <div className='border-b-[1px]'>
                     <h2 className='text-lg'>{header}</h2>
                 </div>
-                <div>
+                <div className='flex flex-col'>
                     {children}
                 </div>
                 <div className='justify-end flex space-x-3 mt-2'>

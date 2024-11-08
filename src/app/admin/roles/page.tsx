@@ -104,8 +104,8 @@ export default function roles() {
       .catch((error) => console.error("Error:", error))
   }
 
-  const handleRoleDeletion = (e:any) => {
-    e.preventDefault();
+  const handleRoleDeletion = (e: any) => {
+    e.preventDefault()
     fetch(`http://localhost:8080/admin/role/delete/${clickedRoleId}`, {
       method: "DELETE",
       headers: {
@@ -122,7 +122,8 @@ export default function roles() {
       .catch((error) => console.error("Error:", error))
   };
 
-  const handleRoleUpdate = (e:any) => {
+  const handleRoleUpdate = (e: any) => {
+    e.preventDefault()
     fetch(`http://localhost:8080/admin/role/update/${clickedRoleId}`, {
       method: "PUT",
       headers: {
